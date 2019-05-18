@@ -21,6 +21,7 @@ class FeedState extends State<Feed> {
         print(appModel.challenges);
 
         return Container(
+          padding: EdgeInsets.all(5.0),
           child: ListView(
             children: challengeCards,
           ),
