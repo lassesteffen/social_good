@@ -33,7 +33,7 @@ class AddState extends State<Add> {
             TextFormField(
               controller: _yController,
               focusNode: _yFocusNode,
-              textInputAction: TextInputAction.next,
+              textInputAction: TextInputAction.done,
               onFieldSubmitted: (term) => _submitChallenge(context),
               decoration: InputDecoration(labelText: 'y'),
             ),
