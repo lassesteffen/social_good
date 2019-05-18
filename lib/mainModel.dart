@@ -63,7 +63,7 @@ class AppModel extends Model {
 
   void supportChallenge(String challengeId, User supporter, double amount) {
     Challenge currentChallenge = challenge(challengeId);
-    final Supporter supporter = Supporter(user: currentUser, amount: amount);
+    final Supporter supporter = Supporter(currentUser, amount);
     currentChallenge.supporters.add(supporter);
     notifyListeners();
   }
