@@ -10,7 +10,7 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State<Profile> {
-  String profileImage = 'assets/profile.jpeg';
+  String profileImage = 'assets/profi le.jpeg';
 
   Widget build(BuildContext context) {
     final address = 'Sinini St';
