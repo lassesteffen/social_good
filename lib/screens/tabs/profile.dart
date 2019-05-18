@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'package:social_good/utils/url.dart' show openMap;
+
 class Profile extends StatefulWidget {
   ProfileState createState() => ProfileState();
 }
@@ -11,6 +13,10 @@ class ProfileState extends State<Profile> {
   String profileImage = 'assets/profile.jpeg';
 
   Widget build(BuildContext context) {
+    final address = 'Sinini St';
+    final city = 'Harare';
+    final country = 'Zimbabwe';
+
     return Container(
       child: ListView(
         children: <Widget>[
@@ -35,7 +41,13 @@ class ProfileState extends State<Profile> {
           ),
           ListTile(
             leading: Icon(Icons.location_on),
-            title: Text('Africa, Simbabwe'),
+            title: Text(
+              '$country, $city',
+            ),
+            subtitle: Text(address),
+            onTap: () {
+              openMap(address, city, country);
+            },
           ),
           Divider(),
           ListTile(
