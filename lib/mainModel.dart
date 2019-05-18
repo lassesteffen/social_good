@@ -57,7 +57,7 @@ class AppModel extends Model {
       _challenges.firstWhere((Challenge challenge) => challenge.id == id);
 
   void addChallenge(Challenge challenge) {
-    _challenges.add(challenge);
+    _challenges.insert(0, challenge);
     notifyListeners();
   }
 
