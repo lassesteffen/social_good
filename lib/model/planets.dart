@@ -1,4 +1,4 @@
-class Planet {
+class Challenge {
   final String id;
   final String name;
   final String location;
@@ -8,12 +8,12 @@ class Planet {
   final String image;
   final String picture;
 
-  const Planet({this.id, this.name, this.location, this.distance, this.gravity,
+  const Challenge({this.id, this.name, this.location, this.distance, this.gravity,
     this.description, this.image, this.picture});
 }
 
-List<Planet> planets = [
-  const Planet(
+List<Challenge> planets = [
+  const Challenge(
     id: "1",
     name: "Mars",
     location: "Milkyway Galaxy",
@@ -23,7 +23,7 @@ List<Planet> planets = [
     image: "assets/img/mars.png",
     picture: "https://www.nasa.gov/sites/default/files/thumbnails/image/pia21723-16.jpg"
   ),
-  const Planet(
+  const Challenge(
     id: "2",
     name: "Neptune",
     location: "Milkyway Galaxy",
@@ -33,7 +33,7 @@ List<Planet> planets = [
     image: "assets/img/neptune.png",
     picture: "https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/images/110411main_Voyager2_280_yshires.jpg"
   ),
-  const Planet(
+  const Challenge(
     id: "3",
     name: "Moon",
     location: "Milkyway Galaxy",
@@ -43,7 +43,7 @@ List<Planet> planets = [
     image: "assets/img/moon.png",
     picture: "https://farm5.staticflickr.com/4086/5052125139_43c31b7012.jpg"
   ),
-  const Planet(
+  const Challenge(
     id: "4",
     name: "Earth",
     location: "Milkyway Galaxy",
@@ -53,7 +53,7 @@ List<Planet> planets = [
     image: "assets/img/earth.png",
     picture: "https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/iss042e340851_1.jpg"
   ),
-  const Planet(
+  const Challenge(
     id: "5",
     name: "Mercury",
     location: "Milkyway Galaxy",

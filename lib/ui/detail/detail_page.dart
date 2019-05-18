@@ -7,7 +7,7 @@ import 'package:social_good/ui/text_style.dart';
 
 class DetailPage extends StatelessWidget {
 
-  final Planet planet;
+  final Challenge planet;
 
   DetailPage(this.planet);
 

@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       routes: routes,
       theme: ThemeData(
         primaryColor: Color(0xff3f6184),
-        accentColor: Colors.amber,
+        accentColor: Color(0xff3f6178),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_good/model/challenges.dart';
 import 'package:social_good/ui/common/separator.dart';
-import 'package:social_good/ui/detail/detail_page.dart';
+import 'package:social_good/screens/challenge_detail.dart';
 import 'package:social_good/ui/text_style.dart';
 
 class ChallengeCard extends StatelessWidget {
@@ -81,14 +81,14 @@ class ChallengeCard extends StatelessWidget {
 
     return new GestureDetector(
         onTap: horizontal
-            ? () => {} // Navigator.of(context).push(
-//                  new PageRouteBuilder(
-//                    pageBuilder: (_, __, ___) => new DetailPage(challenge),
-//                    transitionsBuilder: (context, animation, secondaryAnimation,
-//                            child) =>
-//                        new FadeTransition(opacity: animation, child: child),
-//                  ),
-//                )
+            ? () => Navigator.of(context).push(
+                  new PageRouteBuilder(
+                    pageBuilder: (_, __, ___) => new DetailPage(challenge),
+                    transitionsBuilder: (context, animation, secondaryAnimation,
+                            child) =>
+                        new FadeTransition(opacity: animation, child: child),
+                  ),
+                )
             : null,
         child: new Container(
           margin: const EdgeInsets.symmetric(
