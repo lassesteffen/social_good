@@ -15,8 +15,8 @@ class _ViewState extends State<View> {
 
   static List<Widget> _widgetOptions = <Widget>[
     Chats(),
-    Profile(),
     Assistant(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
