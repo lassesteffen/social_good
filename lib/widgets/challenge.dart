@@ -15,14 +15,14 @@ class ChallengeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final planetThumbnail = new Container(
-      margin: new EdgeInsets.symmetric(vertical: 16.0),
+      margin: new EdgeInsets.symmetric(vertical: 31.0),
       alignment:
           horizontal ? FractionalOffset.centerLeft : FractionalOffset.center,
       child: new Hero(
         tag: "planet-hero-${challenge.id}",
         child: Container(
-          height: 92.0,
-          width: 92.0,
+          height: 60.0,
+          width: 60.0,
           child: CircleAvatar(
             backgroundImage: new AssetImage(challenge.contestant.image),
           ),
@@ -42,35 +42,18 @@ class ChallengeCard extends StatelessWidget {
 
     final planetCardContent = new Container(
       margin: new EdgeInsets.fromLTRB(
-          horizontal ? 76.0 : 16.0, horizontal ? 16.0 : 42.0, 16.0, 16.0),
+          horizontal ? 46.0 : 16.0, horizontal ? 16.0 : 42.0, 16.0, 16.0),
       constraints: new BoxConstraints.expand(),
       child: new Column(
         crossAxisAlignment:
             horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: <Widget>[
+          new Text('${challenge.raisedAmount}€/${challenge.fundingGoal}€',
+              style: Style.commonTextStyle),
           new Container(height: 4.0),
           new Text(challenge.title, style: Style.titleTextStyle),
           new Container(height: 10.0),
           new Text(challenge.distance, style: Style.commonTextStyle),
-          new Separator(),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Expanded(
-                  flex: horizontal ? 1 : 0,
-                  child: _planetValue(
-                      value: challenge.distance,
-                      image: 'assets/img/ic_distance.png')),
-              new Container(
-                width: horizontal ? 8.0 : 32.0,
-              ),
-              new Expanded(
-                  flex: horizontal ? 1 : 0,
-                  child: _planetValue(
-                      value: challenge.raisedAmount.toString(),
-                      image: 'assets/img/ic_gravity.png'))
-            ],
-          ),
         ],
       ),
     );
@@ -79,7 +62,7 @@ class ChallengeCard extends StatelessWidget {
       child: planetCardContent,
       height: horizontal ? 124.0 : 154.0,
       margin: horizontal
-          ? new EdgeInsets.only(left: 46.0)
+          ? new EdgeInsets.only(left: 25.0)
           : new EdgeInsets.only(top: 72.0),
       decoration: new BoxDecoration(
         color: Theme.of(context).primaryColor,
@@ -108,8 +91,7 @@ class ChallengeCard extends StatelessWidget {
             : null,
         child: new Container(
           margin: const EdgeInsets.symmetric(
-            vertical: 16.0,
-            horizontal: 24.0,
+            vertical: 10.0,
           ),
           child: new Stack(
             children: <Widget>[
