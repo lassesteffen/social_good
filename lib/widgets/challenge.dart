@@ -1,111 +1,120 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-
-import 'package:social_good/utils/url.dart' show openMap;
+import 'package:social_good/model/challenges.dart';
+import 'package:social_good/ui/common/separator.dart';
+import 'package:social_good/ui/detail/detail_page.dart';
+import 'package:social_good/ui/text_style.dart';
 
 class ChallengeCard extends StatelessWidget {
-  var challenge;
-  ChallengeCard({this.challenge});
+  final Challenge challenge;
+  final bool horizontal;
+
+  ChallengeCard(this.challenge, {this.horizontal = true});
+
+  ChallengeCard.vertical(this.challenge) : horizontal = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: <Widget>[
-          const ListTile(
-            leading: CircleAvatar(),
-          )
-        ],
+    final planetThumbnail = new Container(
+      margin: new EdgeInsets.symmetric(vertical: 16.0),
+      alignment:
+          horizontal ? FractionalOffset.centerLeft : FractionalOffset.center,
+      child: new Hero(
+        tag: "planet-hero-${challenge.id}",
+        child: new Image(
+          image: new AssetImage(challenge.image),
+          height: 92.0,
+          width: 92.0,
+        ),
       ),
-    )
-  }
-}
+    );
 
-var challenge = {
-  'title': 'Jump in lake',
-  'description': 'blablabla',
-  'raisedAmount': 100,
-  'contestant': {
-    'profileImage': 'assets/profile.jpeg',
-    'name': 'Paul',
-  },
-};
+    Widget _planetValue({String value, String image}) {
+      return new Container(
+        child: new Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+          new Image.asset(image, height: 12.0),
+          new Container(width: 8.0),
+          new Text(challenge.gravity, style: Style.smallTextStyle),
+        ]),
+      );
+    }
 
-
-
-class ChallengeCardState extends State<ChallengeCard> {
-  String profileImage = 'assets/profi le.jpeg';
-
-  Widget build(BuildContext context) {
-    final address = 'Sinini St';
-    final city = 'Harare';
-    final country = 'Zimbabwe';
-
-    return Container(
-      child: ListView(
+    final planetCardContent = new Container(
+      margin: new EdgeInsets.fromLTRB(
+          horizontal ? 76.0 : 16.0, horizontal ? 16.0 : 42.0, 16.0, 16.0),
+      constraints: new BoxConstraints.expand(),
+      child: new Column(
+        crossAxisAlignment:
+            horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: <Widget>[
-          Stack(
+          new Container(height: 4.0),
+          new Text(challenge.name, style: Style.titleTextStyle),
+          new Container(height: 10.0),
+          new Text(challenge.location, style: Style.commonTextStyle),
+          new Separator(),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset(
-                profileImage,
-                height: 280,
-                width: MediaQuery.of(context).size.width,
-                fit: BoxFit.cover,
+              new Expanded(
+                  flex: horizontal ? 1 : 0,
+                  child: _planetValue(
+                      value: challenge.distance,
+                      image: 'assets/img/ic_distance.png')),
+              new Container(
+                width: horizontal ? 8.0 : 32.0,
               ),
-              Align(
-                alignment: Alignment.topRight,
-                child: FlatButton(
-                  child: Icon(Icons.edit),
-                  onPressed: () {
-                    _takePicture(context);
-                  },
-                ),
-              ),
+              new Expanded(
+                  flex: horizontal ? 1 : 0,
+                  child: _planetValue(
+                      value: challenge.gravity,
+                      image: 'assets/img/ic_gravity.png'))
             ],
           ),
-          ListTile(
-            leading: Icon(Icons.location_on),
-            title: Text(
-              '$country, $city',
-            ),
-            subtitle: Text(address),
-            onTap: () {
-              openMap(address, city, country);
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.message),
-            title: Text(
-              'Skills',
-              style: Theme.of(context).textTheme.headline,
-            ),
-          ),
-          ListTile(
-            title: Text('Skill 1'),
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.message),
-            title: Text(
-              'Needs',
-              style: Theme.of(context).textTheme.headline,
-            ),
-          ),
-          ListTile(
-            title: Text('Need 1'),
+        ],
+      ),
+    );
+
+    final planetCard = new Container(
+      child: planetCardContent,
+      height: horizontal ? 124.0 : 154.0,
+      margin: horizontal
+          ? new EdgeInsets.only(left: 46.0)
+          : new EdgeInsets.only(top: 72.0),
+      decoration: new BoxDecoration(
+        color: new Color(0xFF333366),
+        shape: BoxShape.rectangle,
+        borderRadius: new BorderRadius.circular(8.0),
+        boxShadow: <BoxShadow>[
+          new BoxShadow(
+            color: Colors.black12,
+            blurRadius: 10.0,
+            offset: new Offset(0.0, 10.0),
           ),
         ],
       ),
     );
-  }
 
-  _takePicture(BuildContext context) async {
-    File cameraFile = await ImagePicker.pickImage(
-      source: ImageSource.camera,
-    );
-    setState(() {
-      profileImage = cameraFile.path;
-    });
+    return new GestureDetector(
+        onTap: horizontal
+            ? () => {} // Navigator.of(context).push(
+//                  new PageRouteBuilder(
+//                    pageBuilder: (_, __, ___) => new DetailPage(challenge),
+//                    transitionsBuilder: (context, animation, secondaryAnimation,
+//                            child) =>
+//                        new FadeTransition(opacity: animation, child: child),
+//                  ),
+//                )
+            : null,
+        child: new Container(
+          margin: const EdgeInsets.symmetric(
+            vertical: 16.0,
+            horizontal: 24.0,
+          ),
+          child: new Stack(
+            children: <Widget>[
+              planetCard,
+              planetThumbnail,
+            ],
+          ),
+        ));
   }
 }
