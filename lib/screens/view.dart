@@ -14,11 +14,12 @@ class View extends StatefulWidget {
 
 class _ViewState extends State<View> {
   int _selectedIndex = 0;
+  int _pageCount = 4;
 
   static List<Widget> _widgetOptions = <Widget>[
     Feed(),
     History(),
-    Add(),
+    Text('Add'),
     Notifications(),
     Profile(),
   ];
@@ -46,8 +47,26 @@ class _ViewState extends State<View> {
       appBar: AppBar(
         title: const Text('Some Title'),
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: Stack(
+        children: List<Widget>.generate(
+          _pageCount,
+          (int index) {
+            return IgnorePointer(
+              ignoring: index != _selectedIndex,
+              child: Opacity(
+                opacity: _selectedIndex == index ? 1.0 : 0.0,
+                child: Navigator(
+                  onGenerateRoute: (RouteSettings settings) {
+                    return new MaterialPageRoute(
+                      builder: (_) => _widgetOptions.elementAt(index),
+                      settings: settings,
+                    );
+                  },
+                ),
+              ),
+            );
+          },
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
