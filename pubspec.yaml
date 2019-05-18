@@ -26,6 +26,7 @@ dependencies:
   image_picker:
   url_launcher:
   flutter_local_notifications:
+  scoped_model:
 
 dev_dependencies:
   flutter_test:
