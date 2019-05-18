@@ -25,7 +25,19 @@ class _ViewState extends State<View> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      if (index == 2) {
+        Navigator.push(
+          context,
+          MaterialPageRoute<Null>(
+            builder: (BuildContext context) {
+              return Add();
+            },
+            fullscreenDialog: true,
+          ),
+        );
+      } else {
+        _selectedIndex = index;
+      }
     });
   }
 
