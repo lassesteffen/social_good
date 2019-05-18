@@ -10,11 +10,21 @@
 // bar items. The first one is selected.](https://flutter.github.io/assets-for-api-docs/assets/material/bottom_navigation_bar.png)
 
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 import 'package:social_good/routes.dart' show routes;
+import 'package:social_good/mainModel.dart' show AppModel;
 
 void main() {
-  runApp(MyApp());
+  final model = AppModel();
+  model.loadData();
+
+  runApp(
+    ScopedModel<AppModel>(
+      model: model,
+      child: MyApp(),
+    ),
+  );
 }
 
 /// This Widget is the main application widget.
@@ -28,7 +38,8 @@ class MyApp extends StatelessWidget {
       initialRoute: 'View',
       routes: routes,
       theme: ThemeData(
-        primaryColor: Colors.red,
+        primaryColor: Color(0xff3f6184),
+        accentColor: Colors.amber,
       ),
     );
   }

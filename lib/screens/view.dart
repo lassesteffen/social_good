@@ -13,7 +13,7 @@ class View extends StatefulWidget {
 }
 
 class _ViewState extends State<View> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
     Feed(),

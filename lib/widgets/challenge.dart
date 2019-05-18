@@ -20,10 +20,12 @@ class ChallengeCard extends StatelessWidget {
           horizontal ? FractionalOffset.centerLeft : FractionalOffset.center,
       child: new Hero(
         tag: "planet-hero-${challenge.id}",
-        child: new Image(
-          image: new AssetImage(challenge.image),
+        child: Container(
           height: 92.0,
           width: 92.0,
+          child: CircleAvatar(
+            backgroundImage: new AssetImage(challenge.contestant.image),
+          ),
         ),
       ),
     );
@@ -33,7 +35,7 @@ class ChallengeCard extends StatelessWidget {
         child: new Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
           new Image.asset(image, height: 12.0),
           new Container(width: 8.0),
-          new Text(challenge.gravity, style: Style.smallTextStyle),
+          new Text(challenge.description, style: Style.smallTextStyle),
         ]),
       );
     }
@@ -47,9 +49,9 @@ class ChallengeCard extends StatelessWidget {
             horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: <Widget>[
           new Container(height: 4.0),
-          new Text(challenge.name, style: Style.titleTextStyle),
+          new Text(challenge.title, style: Style.titleTextStyle),
           new Container(height: 10.0),
-          new Text(challenge.location, style: Style.commonTextStyle),
+          new Text(challenge.distance, style: Style.commonTextStyle),
           new Separator(),
           new Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +67,7 @@ class ChallengeCard extends StatelessWidget {
               new Expanded(
                   flex: horizontal ? 1 : 0,
                   child: _planetValue(
-                      value: challenge.gravity,
+                      value: challenge.raisedAmount.toString(),
                       image: 'assets/img/ic_gravity.png'))
             ],
           ),
@@ -80,7 +82,7 @@ class ChallengeCard extends StatelessWidget {
           ? new EdgeInsets.only(left: 46.0)
           : new EdgeInsets.only(top: 72.0),
       decoration: new BoxDecoration(
-        color: new Color(0xFF333366),
+        color: Theme.of(context).primaryColor,
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[

@@ -1,20 +1,19 @@
 class User {
   final String id;
   final String name;
-  final String location;
-  final String distance;
-  final String gravity;
-  final String description;
   final String image;
-  final String picture;
 
-  const User(
-      {this.id,
-      this.name,
-      this.location,
-      this.distance,
-      this.gravity,
-      this.description,
-      this.image,
-      this.picture});
+  const User({
+    this.id,
+    this.name,
+    this.image,
+  });
 }
+
+List<User> userMocks = [
+  const User(
+    id: '1',
+    name: 'Paul',
+    image: 'assets/profile.jpeg',
+  )
+];
