@@ -27,6 +27,7 @@ dependencies:
   url_launcher:
   flutter_local_notifications:
   scoped_model:
+  flutter_tags:
 
 dev_dependencies:
   flutter_test:
