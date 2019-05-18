@@ -83,10 +83,16 @@ class ChallengeCard extends StatelessWidget {
         onTap: horizontal
             ? () => Navigator.of(context).push(
                   new PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => new DetailPage(challenge),
-                    transitionsBuilder: (context, animation, secondaryAnimation,
-                            child) =>
-                        new FadeTransition(opacity: animation, child: child),
+                    pageBuilder: (_, __, ___) => new DetailPage(
+                          challenge,
+                          pageId,
+                        ),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) =>
+                            new FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            ),
                   ),
                 )
             : null,

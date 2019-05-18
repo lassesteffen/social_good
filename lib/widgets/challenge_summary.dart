@@ -6,11 +6,12 @@ import 'package:social_good/ui/text_style.dart';
 
 class ChallengeSummary extends StatelessWidget {
   final Challenge challenge;
+  final String pageId;
   final bool horizontal;
 
-  ChallengeSummary(this.challenge, {this.horizontal = true});
+  ChallengeSummary(this.challenge, this.pageId, {this.horizontal = true});
 
-  ChallengeSummary.vertical(this.challenge) : horizontal = false;
+  ChallengeSummary.vertical(this.challenge, this.pageId) : horizontal = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +20,13 @@ class ChallengeSummary extends StatelessWidget {
       alignment:
           horizontal ? FractionalOffset.centerLeft : FractionalOffset.center,
       child: new Hero(
-        tag: "planet-hero-${challenge.id}",
-        child: new Image(
-          image: new AssetImage(challenge.contestant.image),
+        tag: "planet-hero-$pageId-${challenge.id}",
+        child: Container(
           height: 92.0,
           width: 92.0,
+          child: CircleAvatar(
+            backgroundImage: new AssetImage(challenge.contestant.image),
+          ),
         ),
       ),
     );
@@ -101,7 +104,10 @@ class ChallengeSummary extends StatelessWidget {
             ? () {
                 Navigator.of(context).push(
                   new PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => new DetailPage(challenge),
+                    pageBuilder: (_, __, ___) => new DetailPage(
+                          challenge,
+                          pageId,
+                        ),
                     transitionsBuilder: (context, animation, secondaryAnimation,
                             child) =>
                         new FadeTransition(opacity: animation, child: child),

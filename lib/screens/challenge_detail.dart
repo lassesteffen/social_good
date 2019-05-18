@@ -7,8 +7,9 @@ import 'package:social_good/ui/text_style.dart';
 
 class DetailPage extends StatelessWidget {
   final Challenge challenge;
+  final String pageId;
 
-  DetailPage(this.challenge);
+  DetailPage(this.challenge, this.pageId);
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +66,7 @@ class DetailPage extends StatelessWidget {
         children: <Widget>[
           new ChallengeSummary(
             challenge,
+            pageId,
             horizontal: false,
           ),
           new Container(
