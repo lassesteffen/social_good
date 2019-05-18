@@ -1,5 +1,15 @@
 import 'users.dart';
 
+class Supporter {
+  final User user;
+  final double amount;
+
+  const Supporter({
+    this.user,
+    this.amount,
+  });
+}
+
 class Challenge {
   final String id;
   final String title;
@@ -7,18 +17,23 @@ class Challenge {
   final String description;
   final List<String> tags;
   final User contestant;
+  List<Supporter> supporters;
   final int fundingGoal;
-  final int raisedAmount;
+  int raisedAmount;
+  final DateTime createdAt;
+  DateTime finishedAt;
 
-  const Challenge({
+  Challenge({
     this.id,
     this.title,
     this.tags,
     this.contestant,
+    this.supporters,
     this.distance,
     this.fundingGoal,
     this.raisedAmount,
     this.description,
+    this.createdAt,
   });
 }
 
