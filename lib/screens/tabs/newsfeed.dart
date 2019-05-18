@@ -15,7 +15,7 @@ class FeedState extends State<Feed> {
       builder: (context, child, appModel) {
         List<Widget> challengeCards = appModel.challenges.map(
           (Challenge challenge) {
-            return ChallengeCard(challenge);
+            return ChallengeCard(challenge, 'feed');
           },
         ).toList();
 

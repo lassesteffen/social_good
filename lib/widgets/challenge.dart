@@ -6,11 +6,12 @@ import 'package:social_good/ui/text_style.dart';
 
 class ChallengeCard extends StatelessWidget {
   final Challenge challenge;
+  final String pageId;
   final bool horizontal;
 
-  ChallengeCard(this.challenge, {this.horizontal = true});
+  ChallengeCard(this.challenge, this.pageId, {this.horizontal = true});
 
-  ChallengeCard.vertical(this.challenge) : horizontal = false;
+  ChallengeCard.vertical(this.challenge, this.pageId) : horizontal = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class ChallengeCard extends StatelessWidget {
       alignment:
           horizontal ? FractionalOffset.centerLeft : FractionalOffset.center,
       child: new Hero(
-        tag: "planet-hero-${challenge.id}",
+        tag: "planet-hero-$pageId-${challenge.id}",
         child: Container(
           height: 60.0,
           width: 60.0,

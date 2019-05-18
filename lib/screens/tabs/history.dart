@@ -9,7 +9,7 @@ class History extends StatelessWidget {
     return ScopedModelDescendant<AppModel>(
       builder: (context, child, appModel) {
         List<Widget> openChallengedWidgets = appModel.challenges
-            .map((Challenge challenge) => ChallengeCard(challenge))
+            .map((Challenge challenge) => ChallengeCard(challenge, 'history'))
             .toList();
 
         return Container(
