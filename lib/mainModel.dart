@@ -4,7 +4,7 @@ import 'package:scoped_model/scoped_model.dart';
 
 import 'package:social_good/model/users.dart' show userMocks, User;
 import 'package:social_good/model/challenges.dart'
-    show challengeMocks, Challenge;
+    show challengeMocks, Challenge, Supporter;
 
 class AppModel extends Model {
   /// Internal, private state of the cart.
@@ -27,11 +27,50 @@ class AppModel extends Model {
 
   List<Challenge> get challenges => _challenges;
 
+  UnmodifiableListView<Challenge> get myActiveChallenges {
+    return UnmodifiableListView(_challenges.where((Challenge challenge) =>
+        challenge.contestant == currentUser && challenge.finishedAt == null));
+  }
+
+  UnmodifiableListView<Challenge> get myFinishedChallenges {
+    return UnmodifiableListView(_challenges.where((Challenge challenge) =>
+        challenge.contestant == currentUser && challenge.finishedAt != null));
+  }
+
+  UnmodifiableListView<Challenge> get myActiveSupportedChallenges {
+    return UnmodifiableListView(_challenges.where((Challenge challenge) =>
+        challenge.supporters
+            .map((Supporter supporter) => supporter.user)
+            .contains(currentUser) &&
+        challenge.finishedAt != null));
+  }
+
+  UnmodifiableListView<Challenge> get myFinishedSupportedChallenges {
+    return UnmodifiableListView(_challenges.where((Challenge challenge) =>
+        challenge.supporters
+            .map((Supporter supporter) => supporter.user)
+            .contains(currentUser) &&
+        challenge.finishedAt != null));
+  }
+
   Challenge challenge(id) =>
       _challenges.firstWhere((Challenge challenge) => challenge.id == id);
 
   void addChallenge(Challenge challenge) {
     _challenges.add(challenge);
+    notifyListeners();
+  }
+
+  void supportChallenge(String challengeId, User supporter, double amount) {
+    Challenge currentChallenge = challenge(challengeId);
+    final Supporter supporter = Supporter(user: currentUser, amount: amount);
+    currentChallenge.supporters.add(supporter);
+    notifyListeners();
+  }
+
+  void finishChallenge(String challengeId) {
+    Challenge currentChallenge = challenge(challengeId);
+    currentChallenge.finishedAt = DateTime.now();
     notifyListeners();
   }
 }

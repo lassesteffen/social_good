@@ -77,46 +77,6 @@ class _ViewState extends State<View> {
         selectedItemColor: Theme.of(context).primaryColor,
         onTap: _onItemTapped,
       ),
-      drawer: MyDrawer(),
-    );
-  }
-}
-
-class MyDrawer extends StatelessWidget {
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            child: Text('Der Bauer'),
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Log out'),
-            onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pushNamed(context, 'Login');
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.help),
-            title: Text('Help'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () {},
-          ),
-        ],
-      ),
     );
   }
 }
