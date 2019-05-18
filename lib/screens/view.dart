@@ -14,7 +14,7 @@ class View extends StatefulWidget {
 
 class _ViewState extends State<View> {
   int _selectedIndex = 0;
-  int _pageCount = 4;
+  int _pageCount = 5;
 
   static List<Widget> _widgetOptions = <Widget>[
     Feed(),
