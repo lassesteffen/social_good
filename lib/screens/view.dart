@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import './tabs/assistant.dart' show Assistant;
-import './tabs/chats.dart' show Chats;
 import './tabs/profile.dart' show Profile;
+import './tabs/add.dart' show Add;
+import './tabs/history.dart' show History;
+import './tabs/notifications.dart' show Notifications;
+import './tabs/newsfeed.dart' show Feed;
 
 class View extends StatefulWidget {
   View({Key key}) : super(key: key);
@@ -14,8 +16,10 @@ class _ViewState extends State<View> {
   int _selectedIndex = 1;
 
   static List<Widget> _widgetOptions = <Widget>[
-    Chats(),
-    Assistant(),
+    Feed(),
+    History(),
+    Add(),
+    Notifications(),
     Profile(),
   ];
 
@@ -25,7 +29,6 @@ class _ViewState extends State<View> {
     });
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -35,14 +38,23 @@ class _ViewState extends State<View> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.chat_bubble),
-            title: Text('Chats'),
+            title: Text('Feed'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.insert_drive_file),
+            title: Text('History'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
-            title: Text('Assistant'),
+            title: Text('Add'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            title: Text('Notifications'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -52,6 +64,46 @@ class _ViewState extends State<View> {
         currentIndex: _selectedIndex,
         selectedItemColor: Theme.of(context).primaryColor,
         onTap: _onItemTapped,
+      ),
+      drawer: MyDrawer(),
+    );
+  }
+}
+
+class MyDrawer extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        // Important: Remove any padding from the ListView.
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            child: Text('Der Bauer'),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.exit_to_app),
+            title: Text('Log out'),
+            onTap: () {
+              // Update the state of the app
+              // ...
+              // Then close the drawer
+              Navigator.pushNamed(context, 'Login');
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.help),
+            title: Text('Help'),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
+            onTap: () {},
+          ),
+        ],
       ),
     );
   }

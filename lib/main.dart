@@ -10,9 +10,12 @@
 // bar items. The first one is selected.](https://flutter.github.io/assets-for-api-docs/assets/material/bottom_navigation_bar.png)
 
 import 'package:flutter/material.dart';
+
 import 'package:social_good/routes.dart' show routes;
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 /// This Widget is the main application widget.
 class MyApp extends StatelessWidget {

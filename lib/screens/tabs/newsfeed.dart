@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Assistant extends StatelessWidget {
+class Feed extends StatelessWidget {
   Widget build(BuildContext context) {
-    return Text('Assistant');
+    return Text('Feed');
   }
 }
