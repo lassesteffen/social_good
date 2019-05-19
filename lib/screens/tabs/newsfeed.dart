@@ -13,7 +13,7 @@ class FeedState extends State<Feed> {
   Widget build(BuildContext context) {
     return ScopedModelDescendant<AppModel>(
       builder: (context, child, appModel) {
-        List<Widget> challengeCards = appModel.upcomingChallenges.map(
+        List<Widget> challengeCards = appModel.myFeedChallenges.map(
           (Challenge challenge) {
             return ChallengeCard(challenge, 'feed');
           },
