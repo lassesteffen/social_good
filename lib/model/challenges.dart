@@ -41,6 +41,7 @@ class Challenge {
     this.fundingGoal,
     this.description,
     this.createdAt,
+    this.finishedAt,
   });
 }
 
@@ -110,7 +111,9 @@ List<Challenge> challengeMocks = [
     contestant: userMocks[4],
     supporters: [
       Supporter(userMocks[2], 1),
+      Supporter(userMocks[0], 3),
     ],
+    finishedAt: DateTime.now(),
   ),
   Challenge(
     id: '12bbbb4',
@@ -123,5 +126,6 @@ List<Challenge> challengeMocks = [
       Supporter(userMocks[4], 2),
       Supporter(userMocks[0], 3),
     ],
+    finishedAt: DateTime.now(),
   ),
 ];

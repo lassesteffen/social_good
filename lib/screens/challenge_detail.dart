@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
+
+import 'package:social_good/mainModel.dart' show AppModel;
 import 'package:social_good/model/challenges.dart';
 import 'package:social_good/widgets/challenge_summary.dart'
     show ChallengeSummary;
@@ -26,6 +29,15 @@ class DetailPage extends StatelessWidget {
           ],
         ),
       ),
+      persistentFooterButtons: <Widget>[
+        FlatButton(
+          child: Text('Support Challenge'),
+          onPressed: () {
+            AppModel model = ScopedModel.of<AppModel>(context);
+            model.supportChallenge(challenge.id, 5.0);
+          },
+        )
+      ],
     );
   }
 

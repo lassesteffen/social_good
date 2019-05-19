@@ -32,30 +32,38 @@ class AppModel extends Model {
 
   List<Challenge> get challenges => _challenges;
 
-  UnmodifiableListView<Challenge> get myActiveChallenges {
-    return UnmodifiableListView(_challenges.where((Challenge challenge) =>
-        challenge.contestant == currentUser && challenge.finishedAt == null));
+  UnmodifiableListView<Challenge> get upcomingChallenges {
+    return UnmodifiableListView(challenges
+        .where((Challenge challenge) => challenge.finishedAt == null));
   }
 
-  UnmodifiableListView<Challenge> get myFinishedChallenges {
-    return UnmodifiableListView(_challenges.where((Challenge challenge) =>
-        challenge.contestant == currentUser && challenge.finishedAt != null));
+  UnmodifiableListView<Challenge> get completedChallenges {
+    return UnmodifiableListView(challenges
+        .where((Challenge challenge) => challenge.finishedAt != null));
+  }
+
+  UnmodifiableListView<Challenge> get myActiveChallenges {
+    return UnmodifiableListView(upcomingChallenges
+        .where((Challenge challenge) => challenge.contestant == currentUser));
+  }
+
+  UnmodifiableListView<Challenge> get myCompletedChallenges {
+    return UnmodifiableListView(completedChallenges
+        .where((Challenge challenge) => challenge.contestant == currentUser));
   }
 
   UnmodifiableListView<Challenge> get myActiveSupportedChallenges {
-    return UnmodifiableListView(_challenges.where((Challenge challenge) =>
-        challenge.supporters
+    return UnmodifiableListView(upcomingChallenges.where(
+        (Challenge challenge) => challenge.supporters
             .map((Supporter supporter) => supporter.user)
-            .contains(currentUser) &&
-        challenge.finishedAt != null));
+            .contains(currentUser)));
   }
 
-  UnmodifiableListView<Challenge> get myFinishedSupportedChallenges {
-    return UnmodifiableListView(_challenges.where((Challenge challenge) =>
-        challenge.supporters
+  UnmodifiableListView<Challenge> get myCompletedSupportedChallenges {
+    return UnmodifiableListView(completedChallenges.where(
+        (Challenge challenge) => challenge.supporters
             .map((Supporter supporter) => supporter.user)
-            .contains(currentUser) &&
-        challenge.finishedAt != null));
+            .contains(currentUser)));
   }
 
   Challenge challenge(id) =>
@@ -66,7 +74,7 @@ class AppModel extends Model {
     notifyListeners();
   }
 
-  void supportChallenge(String challengeId, User supporter, double amount) {
+  void supportChallenge(String challengeId, double amount) {
     Challenge currentChallenge = challenge(challengeId);
     final Supporter supporter = Supporter(currentUser, amount);
     currentChallenge.supporters.add(supporter);

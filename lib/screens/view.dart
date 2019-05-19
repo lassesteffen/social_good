@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './tabs/profile.dart' show Profile;
 import './tabs/add.dart' show Add;
 import './tabs/history.dart' show History;
-import './tabs/notifications.dart' show Notifications;
+import './tabs/supported_challenges.dart' show MySupportedChallenges;
 import './tabs/newsfeed.dart' show Feed;
 
 class View extends StatefulWidget {
@@ -14,14 +14,21 @@ class View extends StatefulWidget {
 
 class _ViewState extends State<View> {
   int _selectedIndex = 0;
-  int _pageCount = 5;
 
   static List<Widget> _widgetOptions = <Widget>[
     Feed(),
-    History(),
+    MySupportedChallenges(),
     Text('Add'),
-    Notifications(),
+    History(),
     Profile(),
+  ];
+
+  static List<String> _widgetTitles = <String>[
+    'Feed',
+    'Supported Challenges',
+    'Add',
+    'My Challenges',
+    'Profile',
   ];
 
   void _onItemTapped(int index) {
@@ -45,7 +52,7 @@ class _ViewState extends State<View> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Profile'),
+        title: Text(_widgetTitles.elementAt(_selectedIndex)),
       ),
       body: IndexedStack(
         index: _selectedIndex,
@@ -55,20 +62,20 @@ class _ViewState extends State<View> {
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble),
+            icon: Icon(Icons.home),
             title: Text('Feed'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.insert_drive_file),
-            title: Text('History'),
+            icon: Icon(Icons.star),
+            title: Text('Supporting'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
             title: Text('Add'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            title: Text('Notifications'),
+            icon: Icon(Icons.favorite),
+            title: Text('Mine'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
