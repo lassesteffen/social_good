@@ -66,6 +66,15 @@ class AppModel extends Model {
             .contains(currentUser)));
   }
 
+  UnmodifiableListView<Challenge> get myFeedChallenges {
+    return UnmodifiableListView(upcomingChallenges.where(
+        (Challenge challenge) =>
+            challenge.contestant != currentUser &&
+            !challenge.supporters
+                .map((Supporter supporter) => supporter.user)
+                .contains(currentUser)));
+  }
+
   Challenge challenge(id) =>
       _challenges.firstWhere((Challenge challenge) => challenge.id == id);
 

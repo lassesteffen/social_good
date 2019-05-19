@@ -49,18 +49,18 @@ class Challenge {
 
 List<Challenge> challengeMocks = [
   Challenge(
-    id: '123',
-    title: 'I will wash my neighbor\'s car',
-    distance: 'Nearby',
-    description: 'My neighbor uses his car every day and it is very dirty. It needs to be washed. The problem is, he does not have time to do this, because he must take care about his three children and has no time to do the washing.',
-    fundingGoal: 10,
-    supporters: [
-      Supporter(userMocks[4], 4),
-      Supporter(userMocks[2], 1),
-    ],
-    contestant: userMocks[3],
-    tags: ['society']
-  ),
+      id: '123',
+      title: 'I will wash my neighbor\'s car',
+      distance: 'Nearby',
+      description:
+          'My neighbor uses his car every day and it is very dirty. It needs to be washed. The problem is, he does not have time to do this, because he must take care about his three children and has no time to do the washing.',
+      fundingGoal: 10,
+      supporters: [
+        Supporter(userMocks[4], 4),
+        Supporter(userMocks[2], 1),
+      ],
+      contestant: userMocks[3],
+      tags: ['society']),
   Challenge(
     id: '100',
     title: 'I will plant three new trees',
@@ -116,69 +116,88 @@ List<Challenge> challengeMocks = [
     tags: ['food', 'funny', 'crazy']
   ),
   Challenge(
-    id: '126',
-    title: 'I will clean the sidewalk',
-    distance: 'Nearby',
-    description: 'Because it is DIRTY',
-    fundingGoal: 5,
-    contestant: userMocks[0],
-    supporters: [
-      Supporter(userMocks[1], 2),
-      Supporter(userMocks[2], 1),
-    ],
-    tags: ['society', 'voluntary']
+      id: '124',
+      title: 'I will eat 2 kg of celery',
+      distance: '3 km from you',
+      description: 'Why not? ;)',
+      fundingGoal: 20,
+      supporters: [
+        Supporter(userMocks[0], 5),
+      ],
+      contestant: userMocks[1],
+      tags: ['food', 'funny', 'crazy']
   ),
   Challenge(
-    id: '1211',
-    title: 'I will annoy my neighbours',
-    distance: 'Directly next to you',
-    description: 'this is awesome',
-    fundingGoal: 5,
-    contestant: userMocks[4],
-    supporters: [
-      Supporter(userMocks[1], 1),
-      Supporter(userMocks[3], 1),
-    ],
-    tags: ['unnecessary', 'weird']
-  ),
+      id: '126',
+      title: 'I will clean the sidewalk',
+      distance: 'Nearby',
+      description: 'Because it is DIRTY',
+      fundingGoal: 5,
+      contestant: userMocks[0],
+      supporters: [
+        Supporter(userMocks[1], 2),
+        Supporter(userMocks[2], 1),
+      ],
+      tags: [
+        'society',
+        'voluntary'
+      ]),
   Challenge(
-    id: 'amkaud',
-    title: 'I will help out at the soup kitchen',
-    distance: 'Nearby',
-    description: 'this is awesome',
-    fundingGoal: 10,
-    contestant: userMocks[0],
-    supporters: [],
-    tags: ['voluntary', 'food', 'helping']
-  ),
+      id: '1211',
+      title: 'I will annoy my neighbours',
+      distance: 'Directly next to you',
+      description:
+          'My neighbours are very understanding people and will totally be ok with me annyoing them for charity!',
+      fundingGoal: 5,
+      contestant: userMocks[4],
+      supporters: [
+        Supporter(userMocks[1], 1),
+        Supporter(userMocks[3], 1),
+      ],
+      tags: [
+        'funny',
+        'unnecessary',
+        'weird'
+      ]),
   Challenge(
-    id: 'aaaa',
-    title: 'I will give out Free Hugs',
-    distance: '500m from you',
-    description: 'this is awesome',
-    fundingGoal: 15,
-    contestant: userMocks[4],
-    supporters: [
-      Supporter(userMocks[2], 1),
-      Supporter(userMocks[0], 3),
-      Supporter(userMocks[0], 11),
-    ],
-    finishedAt: DateTime.now(),
-    tags: ['friendship']
-  ),
+      id: 'amkaud',
+      title: 'I will help out at the soup kitchen',
+      distance: 'Berlin, 15km from you',
+      description:
+          'I work in a local supermarket and get some food cheaper or for free, so I want to donate some food to the soup kitchen.',
+      fundingGoal: 10,
+      contestant: userMocks[3],
+      supporters: [Supporter(userMocks[1], 10)],
+      finishedAt: DateTime.now(),
+      tags: ['voluntary', 'food', 'helping']),
   Challenge(
-    id: '12bbbb4',
-    title: 'I will embarass myself in public',
-    distance: '800m from you',
-    description: 'this is awesome',
-    fundingGoal: 20,
-    contestant: userMocks[3],
-    supporters: [
-      Supporter(userMocks[4], 2),
-      Supporter(userMocks[0], 3),
-      Supporter(userMocks[0], 15),
-    ],
-    finishedAt: DateTime.now(),
-    tags: ['funny', 'crazy']
-  ),
+      id: 'aaaa',
+      title: 'I will give out Free Hugs',
+      distance: 'Nearby',
+      description: 'Becasue everyone needs a hug',
+      fundingGoal: 15,
+      contestant: userMocks[4],
+      supporters: [
+        Supporter(userMocks[2], 1),
+        Supporter(userMocks[0], 3),
+        Supporter(userMocks[3], 11)
+      ],
+      finishedAt: DateTime.now(),
+      tags: ['friendship']),
+  Challenge(
+      id: '12bbbb4',
+      title: 'I will embarass myself in public',
+      distance: 'Nearby',
+      description: 'this is awesome',
+      fundingGoal: 20,
+      contestant: userMocks[3],
+      supporters: [
+        Supporter(userMocks[4], 2),
+        Supporter(userMocks[0], 5),
+        Supporter(userMocks[1], 10),
+      ],
+      tags: [
+        'funny',
+        'crazy'
+      ]),
 ];
