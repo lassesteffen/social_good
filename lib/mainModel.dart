@@ -90,9 +90,10 @@ class AppModel extends Model {
     notifyListeners();
   }
 
-  void finishChallenge(String challengeId) {
+  void finishChallenge(String challengeId, String proofPath) {
     Challenge currentChallenge = challenge(challengeId);
     currentChallenge.finishedAt = DateTime.now();
+    currentChallenge.proof = proofPath;
     notifyListeners();
   }
 }

@@ -52,27 +52,17 @@ class ChallengeSummary extends StatelessWidget {
           new Container(height: 4.0),
           new Text(challenge.title, style: Style.titleTextStyle),
           new Container(height: 10.0),
-          new Text(challenge.distance, style: Style.commonTextStyle),
           new Separator(),
           new Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-//              new Expanded(
-//                flex: horizontal ? 1 : 0,
-//                child: _planetValue(
-//                  value: planet.distance,
-//                  image: 'assets/img/ic_distance.png')
-//
-//              ),
+              Text(
+                  '\$${challenge.raisedAmount.toInt()}/\$${challenge.fundingGoal}',
+                  style: Style.commonTextStyle),
               new Container(
                 width: horizontal ? 8.0 : 32.0,
               ),
-//              new Expanded(
-//                  flex: horizontal ? 1 : 0,
-//                  child: _planetValue(
-//                  value: planet.gravity,
-//                  image: 'assets/img/ic_gravity.png')
-//              )
+              new Text(challenge.distance, style: Style.commonTextStyle),
             ],
           ),
         ],
