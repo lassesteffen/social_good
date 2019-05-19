@@ -3,7 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 
 import 'package:social_good/mainModel.dart' show AppModel;
 import 'package:social_good/model/challenges.dart' show Challenge;
-import 'package:social_good/widgets/challenge.dart' show ChallengeCard;
+import 'package:social_good/widgets/challenge_card.dart' show ChallengeCard;
 
 class Feed extends StatefulWidget {
   FeedState createState() => FeedState();

@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:social_good/model/planets.dart';
+import 'package:social_good/model/challenges.dart';
 import 'package:social_good/ui/common/separator.dart';
-import 'package:social_good/ui/detail/detail_page.dart';
+import 'package:social_good/screens/challenge_detail.dart';
 import 'package:social_good/ui/text_style.dart';
 
-class PlanetSummary extends StatelessWidget {
-  final Challenge planet;
+class ChallengeCard extends StatelessWidget {
+  final Challenge challenge;
+  final String pageId;
   final bool horizontal;
 
-  PlanetSummary(this.planet, {this.horizontal = true});
+  ChallengeCard(this.challenge, this.pageId, {this.horizontal = true});
 
-  PlanetSummary.vertical(this.planet) : horizontal = false;
+  ChallengeCard.vertical(this.challenge, this.pageId) : horizontal = false;
 
   @override
   Widget build(BuildContext context) {
     final planetThumbnail = new Container(
-      margin: new EdgeInsets.symmetric(vertical: 16.0),
+      margin: new EdgeInsets.symmetric(vertical: 31.0),
       alignment:
           horizontal ? FractionalOffset.centerLeft : FractionalOffset.center,
       child: new Hero(
-        tag: "planet-hero-${planet.id}",
-        child: new Image(
-          image: new AssetImage(planet.image),
-          height: 92.0,
-          width: 92.0,
+        tag: "planet-hero-$pageId-${challenge.id}",
+        child: Container(
+          height: 60.0,
+          width: 60.0,
+          child: CircleAvatar(
+            backgroundImage: new AssetImage(challenge.contestant.image),
+          ),
         ),
       ),
     );
@@ -33,45 +36,25 @@ class PlanetSummary extends StatelessWidget {
         child: new Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
           new Image.asset(image, height: 12.0),
           new Container(width: 8.0),
-          new Text(planet.gravity, style: Style.smallTextStyle),
+          new Text(challenge.description, style: Style.smallTextStyle),
         ]),
       );
     }
 
     final planetCardContent = new Container(
       margin: new EdgeInsets.fromLTRB(
-          horizontal ? 76.0 : 16.0, horizontal ? 16.0 : 42.0, 16.0, 16.0),
+          horizontal ? 46.0 : 16.0, horizontal ? 16.0 : 42.0, 16.0, 16.0),
       constraints: new BoxConstraints.expand(),
       child: new Column(
         crossAxisAlignment:
             horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: <Widget>[
+          new Text('${challenge.raisedAmount}€/${challenge.fundingGoal}€',
+              style: Style.commonTextStyle),
           new Container(height: 4.0),
-          new Text(planet.name, style: Style.titleTextStyle),
+          new Text(challenge.title, style: Style.titleTextStyle),
           new Container(height: 10.0),
-          new Text(planet.location, style: Style.commonTextStyle),
-          new Separator(),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-//              new Expanded(
-//                flex: horizontal ? 1 : 0,
-//                child: _planetValue(
-//                  value: planet.distance,
-//                  image: 'assets/img/ic_distance.png')
-//
-//              ),
-              new Container(
-                width: horizontal ? 8.0 : 32.0,
-              ),
-//              new Expanded(
-//                  flex: horizontal ? 1 : 0,
-//                  child: _planetValue(
-//                  value: planet.gravity,
-//                  image: 'assets/img/ic_gravity.png')
-//              )
-            ],
-          ),
+          new Text(challenge.distance, style: Style.commonTextStyle),
         ],
       ),
     );
@@ -80,10 +63,10 @@ class PlanetSummary extends StatelessWidget {
       child: planetCardContent,
       height: horizontal ? 124.0 : 154.0,
       margin: horizontal
-          ? new EdgeInsets.only(left: 46.0)
+          ? new EdgeInsets.only(left: 25.0)
           : new EdgeInsets.only(top: 72.0),
       decoration: new BoxDecoration(
-        color: new Color(0xFF333366),
+        color: Theme.of(context).primaryColor,
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[
@@ -100,17 +83,22 @@ class PlanetSummary extends StatelessWidget {
         onTap: horizontal
             ? () => Navigator.of(context).push(
                   new PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => new DetailPage(planet),
-                    transitionsBuilder: (context, animation, secondaryAnimation,
-                            child) =>
-                        new FadeTransition(opacity: animation, child: child),
+                    pageBuilder: (_, __, ___) => new DetailPage(
+                          challenge,
+                          pageId,
+                        ),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) =>
+                            new FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            ),
                   ),
                 )
             : null,
         child: new Container(
           margin: const EdgeInsets.symmetric(
-            vertical: 16.0,
-            horizontal: 24.0,
+            vertical: 10.0,
           ),
           child: new Stack(
             children: <Widget>[

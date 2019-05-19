@@ -47,26 +47,9 @@ class _ViewState extends State<View> {
       appBar: AppBar(
         title: const Text('My Profile'),
       ),
-      body: Stack(
-        children: List<Widget>.generate(
-          _pageCount,
-          (int index) {
-            return IgnorePointer(
-              ignoring: index != _selectedIndex,
-              child: Opacity(
-                opacity: _selectedIndex == index ? 1.0 : 0.0,
-                child: Navigator(
-                  onGenerateRoute: (RouteSettings settings) {
-                    return new MaterialPageRoute(
-                      builder: (_) => _widgetOptions.elementAt(index),
-                      settings: settings,
-                    );
-                  },
-                ),
-              ),
-            );
-          },
-        ),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _widgetOptions,
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
