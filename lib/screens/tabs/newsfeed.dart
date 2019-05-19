@@ -19,11 +19,15 @@ class FeedState extends State<Feed> {
           },
         ).toList();
 
-        return Container(
-          padding: EdgeInsets.all(5.0),
-          child: ListView(
-            children: challengeCards,
-          ),
+        return ListView(
+          children: [
+            Container(
+              margin: EdgeInsets.all(5.0),
+              child: Column(
+                children: challengeCards,
+              ),
+            )
+          ],
         );
       },
     );

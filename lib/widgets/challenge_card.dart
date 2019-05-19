@@ -66,7 +66,9 @@ class ChallengeCard extends StatelessWidget {
           ? new EdgeInsets.only(left: 25.0)
           : new EdgeInsets.only(top: 72.0),
       decoration: new BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: challenge.finishedAt == null
+            ? Theme.of(context).primaryColor
+            : Colors.teal,
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[

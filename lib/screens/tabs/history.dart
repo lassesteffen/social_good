@@ -23,6 +23,7 @@ class History extends StatelessWidget {
             children: [
               ...myOpenChallengeWidgets,
               Container(
+                alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(vertical: 10.0),
                 child: Text(
                   'My Completed Challenges',

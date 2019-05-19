@@ -18,25 +18,29 @@ class MySupportedChallenges extends StatelessWidget {
             .map((Challenge challenge) => ChallengeCard(challenge, 'others'))
             .toList();
 
-        return Container(
-          padding: EdgeInsets.all(5.0),
-          child: ListView(
-            children: [
-              ...myOpenChallengeWidgets,
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 10.0),
-                child: Text(
-                  'Completed Challenges',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
+        return ListView(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(5.0),
+              child: ListView(
+                children: [
+                  ...myOpenChallengeWidgets,
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                    child: Text(
+                      'Completed Challenges',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    alignment: Alignment.center,
                   ),
-                ),
-                alignment: Alignment.center,
+                  ...myCompletedChallengeWidgets,
+                ],
               ),
-              ...myCompletedChallengeWidgets,
-            ],
-          ),
+            )
+          ],
         );
       },
     );
