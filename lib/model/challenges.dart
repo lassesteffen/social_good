@@ -121,6 +121,18 @@ List<Challenge> challengeMocks = [
       proof: 'assets/proof-celery.jpg',
       tags: ['food', 'funny', 'crazy']),
   Challenge(
+      id: '123',
+      title: 'I will present the best App ever in front of a huge crowd',
+      distance: 'Nearby',
+      description:
+          'We want to motivate people to do charitable work and make them recognize how gratifiying it can be to help people!!!!',
+      fundingGoal: 1,
+      supporters: [
+        Supporter(userMocks[1], 1),
+      ],
+      contestant: userMocks[0],
+      tags: ['society']),
+  Challenge(
       id: '126',
       title: 'I will clean the sidewalk',
       distance: 'Nearby',
