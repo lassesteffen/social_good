@@ -45,7 +45,7 @@ class _ViewState extends State<View> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Some Title'),
+        title: const Text('My Profile'),
       ),
       body: Stack(
         children: List<Widget>.generate(

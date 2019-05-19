@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:social_good/mainModel.dart'
+  show AppModel;
 
 import 'package:social_good/utils/url.dart' show openMap;
 
@@ -10,12 +13,11 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State<Profile> {
-  String profileImage = 'assets/profi le.jpeg';
-
   Widget build(BuildContext context) {
-    final address = 'Sinini St';
-    final city = 'Harare';
-    final country = 'Zimbabwe';
+    AppModel model = ScopedModel.of<AppModel>(context);
+    List<ListTile> supportedProjectTiles = model.currentUser.supportedProjects.map((String projectTitle) {
+      return ListTile(title: Text(projectTitle),);
+    }).toList();
 
     return Container(
       child: ListView(
@@ -23,7 +25,7 @@ class ProfileState extends State<Profile> {
           Stack(
             children: <Widget>[
               Image.asset(
-                profileImage,
+                model.currentUser.image,
                 height: 280,
                 width: MediaQuery.of(context).size.width,
                 fit: BoxFit.cover,
@@ -33,7 +35,6 @@ class ProfileState extends State<Profile> {
                 child: FlatButton(
                   child: Icon(Icons.edit),
                   onPressed: () {
-                    _takePicture(context);
                   },
                 ),
               ),
@@ -42,11 +43,11 @@ class ProfileState extends State<Profile> {
           ListTile(
             leading: Icon(Icons.location_on),
             title: Text(
-              '$country, $city',
+              '${model.currentUser.country}, ${model.currentUser.city}',
             ),
-            subtitle: Text(address),
+            subtitle: Text(model.currentUser.address),
             onTap: () {
-              openMap(address, city, country);
+              openMap(model.currentUser.address, model.currentUser.city, model.currentUser.country);
             },
           ),
           Divider(),
@@ -58,7 +59,10 @@ class ProfileState extends State<Profile> {
             ),
           ),
           ListTile(
-            title: Text('Skill 1'),
+            title: Text('First aid'),
+          ),
+          ListTile(
+            title: Text('Repairing electronic devices'),
           ),
           Divider(),
           ListTile(
@@ -69,19 +73,24 @@ class ProfileState extends State<Profile> {
             ),
           ),
           ListTile(
-            title: Text('Need 1'),
+            title: Text('Painter for my flat'),
           ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.message),
+            title: Text(
+              'Supported Projects',
+              style: Theme.of(context).textTheme.headline,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(5.0),
+              child: Column(
+                children: supportedProjectTiles,
+              ),
+          )
         ],
       ),
     );
-  }
-
-  _takePicture(BuildContext context) async {
-    File cameraFile = await ImagePicker.pickImage(
-      source: ImageSource.camera,
-    );
-    setState(() {
-      profileImage = cameraFile.path;
-    });
   }
 }

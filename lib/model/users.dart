@@ -2,11 +2,19 @@ class User {
   final String id;
   final String name;
   final String image;
+  final List<String> supportedProjects;
+  final String city;
+  final String country;
+  final String address;
 
   const User({
     this.id,
     this.name,
     this.image,
+    this.supportedProjects,
+    this.address,
+    this.city,
+    this.country,
   });
 }
 
@@ -15,6 +23,10 @@ List<User> userMocks = [
     id: '1',
     name: 'Paul',
     image: 'assets/profile.jpeg',
+    address: 'Sinini St',
+    city: 'Harare',
+    country: 'Zimbabwe',
+    supportedProjects: ['Water for Africa', 'Brot für die Welt']
   ),
   const User(
     id: '2',
