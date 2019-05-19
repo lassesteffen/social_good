@@ -57,20 +57,68 @@ List<Challenge> challengeMocks = [
       fundingGoal: 10,
       supporters: [
         Supporter(userMocks[4], 4),
-        Supporter(userMocks[2], 1),
+        Supporter(userMocks[3], 1),
       ],
-      contestant: userMocks[3],
+      contestant: userMocks[2],
       tags: ['society']),
+  Challenge(
+      id: '100',
+      title: 'I will plant three new trees',
+      distance: 'Potsdam, 10km from you ',
+      description:
+          'I work for a tree nursery and there are some trees left. If you support my challenge, I will do something for the society and plant some trees in the local park.',
+      fundingGoal: 60,
+      contestant: userMocks[3],
+      supporters: [
+        Supporter(userMocks[4], 2),
+        Supporter(userMocks[1], 3),
+        Supporter(userMocks[2], 15),
+      ],
+      tags: [
+        'society'
+      ]),
+  Challenge(
+      id: '101',
+      title: 'I will spray an unused building',
+      distance: 'Berlin, 20 km from you',
+      description:
+          'I’m interested in graffiti and in my neighborhood is a big grey and unused building. To make it more colorful, I want to improve my skills and spray a graffiti on the wall.',
+      fundingGoal: 25,
+      contestant: userMocks[1],
+      supporters: [
+        Supporter(userMocks[4], 2),
+        Supporter(userMocks[2], 3),
+      ],
+      tags: [
+        'styling'
+      ]),
+  Challenge(
+      id: '102',
+      title: 'I will run a marathon',
+      distance: 'Berlin, 12 km from you ',
+      description:
+          'I want to run a famous marathon, but I can’t motivate myself to train. If I would do something for social good, it would be an extra motivation for me.',
+      fundingGoal: 8,
+      contestant: userMocks[4],
+      supporters: [
+        Supporter(userMocks[1], 2),
+        Supporter(userMocks[2], 3),
+      ],
+      tags: [
+        'personal goals'
+      ]),
   Challenge(
       id: '124',
       title: 'I will eat 2 kg of celery',
-      distance: '3 km from you',
+      distance: 'Nearby',
       description: 'Why not? ;)',
-      fundingGoal: 20,
+      fundingGoal: 10,
       supporters: [
-        Supporter(userMocks[0], 5),
+        Supporter(userMocks[3], 10),
       ],
-      contestant: userMocks[1],
+      contestant: userMocks[0],
+      finishedAt: DateTime.now(),
+      proof: 'assets/proof-celery.jpg',
       tags: ['food', 'funny', 'crazy']),
   Challenge(
       id: '126',
@@ -112,8 +160,9 @@ List<Challenge> challengeMocks = [
           'I work in a local supermarket and get some food cheaper or for free, so I want to donate some food to the soup kitchen.',
       fundingGoal: 10,
       contestant: userMocks[3],
-      supporters: [Supporter(userMocks[1], 10)],
+      supporters: [Supporter(userMocks[0], 10)],
       finishedAt: DateTime.now(),
+      proof: 'assets/proof-soup.jpg',
       tags: ['voluntary', 'food', 'helping']),
   Challenge(
       id: 'aaaa',
@@ -124,7 +173,7 @@ List<Challenge> challengeMocks = [
       contestant: userMocks[4],
       supporters: [
         Supporter(userMocks[2], 1),
-        Supporter(userMocks[0], 3),
+        Supporter(userMocks[1], 3),
         Supporter(userMocks[3], 11)
       ],
       finishedAt: DateTime.now(),
@@ -145,4 +194,19 @@ List<Challenge> challengeMocks = [
         'funny',
         'crazy'
       ]),
+  Challenge(
+      id: '123',
+      title: 'I WILL JUMP into Griebnitzsee',
+      distance: 'Nearby',
+      description:
+          'I\'ve been hacking all day at the HPI Hackathon and need some refreshment. For 10 bucks I\'ll jump into the Griebnitzsee!!!',
+      fundingGoal: 10,
+      supporters: [
+        Supporter(userMocks[0], 9),
+        Supporter(userMocks[4], 1),
+      ],
+      finishedAt: DateTime.now(),
+      proof: 'assets/proof-griebnitz.jpg',
+      contestant: userMocks[1],
+      tags: ['society']),
 ];
