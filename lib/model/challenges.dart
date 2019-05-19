@@ -68,7 +68,7 @@ List<Challenge> challengeMocks = [
       description: 'Why not? ;)',
       fundingGoal: 10,
       supporters: [
-        Supporter(userMocks[0], 10),
+        Supporter(userMocks[3], 10),
       ],
       contestant: userMocks[0],
       finishedAt: DateTime.now(),
@@ -113,7 +113,7 @@ List<Challenge> challengeMocks = [
           'I work in a local supermarket and get some food cheaper or for free, so I want to donate some food to the soup kitchen.',
       fundingGoal: 10,
       contestant: userMocks[3],
-      supporters: [Supporter(userMocks[1], 10)],
+      supporters: [Supporter(userMocks[0], 10)],
       finishedAt: DateTime.now(),
       tags: ['voluntary', 'food', 'helping']),
   Challenge(
@@ -146,4 +146,17 @@ List<Challenge> challengeMocks = [
         'funny',
         'crazy'
       ]),
+  Challenge(
+      id: '123',
+      title: 'I WILL JUMP into Griebnitzsee',
+      distance: 'Nearby',
+      description:
+          'I\'ve been hacking all day at the HPI Hackathon and need some refreshment. For 10 bucks I\'ll jump into the Griebnitzsee!!!',
+      fundingGoal: 10,
+      supporters: [
+        Supporter(userMocks[0], 9),
+        Supporter(userMocks[2], 1),
+      ],
+      contestant: userMocks[3],
+      tags: ['society']),
 ];
