@@ -118,13 +118,13 @@ List<Challenge> challengeMocks = [
   Challenge(
       id: '124',
       title: 'I will eat 2 kg of celery',
-      distance: '3 km from you',
+      distance: 'Nearby',
       description: 'Why not? ;)',
       fundingGoal: 10,
       supporters: [
         Supporter(userMocks[0], 10),
       ],
-      contestant: userMocks[1],
+      contestant: userMocks[0],
       finishedAt: DateTime.now(),
       tags: ['food', 'funny', 'crazy']),
   Challenge(
