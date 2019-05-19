@@ -124,14 +124,14 @@ class AddState extends State<Add> {
   void _submitChallenge(BuildContext context) {
     AppModel model = ScopedModel.of<AppModel>(context);
     model.addChallenge(Challenge(
-    id: DateTime.now().millisecondsSinceEpoch.toString(),
-    title: _titleController.text,
-    distance: 'Nearby',
-    description: _descriptionController.text,
-    fundingGoal: int.parse(_amountController.text),
-    contestant: model.currentUser,
-    supporters: [],
-    tags: _tags.where((tag) => tag.active).map((tag) => tag.title)
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      title: _titleController.text,
+      distance: 'Nearby',
+      description: _descriptionController.text,
+      fundingGoal: int.parse(_amountController.text),
+      contestant: model.currentUser,
+      supporters: [],
+      tags: _tags.where((tag) => tag.active).map((tag) => tag.title).toList()
   ));
     Navigator.pop(context);
   }
