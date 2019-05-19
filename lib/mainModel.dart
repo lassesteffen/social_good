@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:scoped_model/scoped_model.dart';
 
 import 'package:social_good/model/users.dart' show userMocks, User;
+import 'package:social_good/model/projects.dart' show projectMocks, Project;
 import 'package:social_good/model/challenges.dart'
     show challengeMocks, Challenge, Supporter;
 
@@ -11,11 +12,13 @@ class AppModel extends Model {
   List<Challenge> _challenges = [];
   List<User> _users = [];
   User _user = User();
+  List<Project> _projects = [];
 
   void loadData() {
     _challenges = challengeMocks;
     _users = userMocks;
     _user = users[0];
+    _projects = projectMocks;
     notifyListeners();
   }
 
@@ -24,6 +27,8 @@ class AppModel extends Model {
   List<User> get users => _users;
 
   User user(id) => _users.firstWhere((User user) => user.id == id);
+
+  List<Project> get projects => _projects;
 
   List<Challenge> get challenges => _challenges;
 

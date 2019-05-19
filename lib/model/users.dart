@@ -1,13 +1,15 @@
+import 'projects.dart' show projectMocks, Project;
+
 class User {
   final String id;
   final String name;
   final String image;
-  final List<String> supportedProjects;
+  List<Project> supportedProjects;
   final String city;
   final String country;
   final String address;
 
-  const User({
+  User({
     this.id,
     this.name,
     this.image,
@@ -19,31 +21,31 @@ class User {
 }
 
 List<User> userMocks = [
-  const User(
+  User(
     id: '1',
     name: 'Paul',
     image: 'assets/profile.jpeg',
     address: 'Sinini St',
     city: 'Harare',
     country: 'Zimbabwe',
-    supportedProjects: ['Water for Africa', 'Brot für die Welt']
+    supportedProjects: projectMocks
   ),
-  const User(
+  User(
     id: '2',
     name: 'Pascal',
     image: 'assets/amk1.jpg',
   ),
-  const User(
+  User(
     id: '3',
     name: 'Lasse',
     image: 'assets/amk2.jpg',
   ),
-  const User(
+  User(
     id: '4',
     name: 'Jan',
     image: 'assets/amk3.jpg',
   ),
-  const User(
+  User(
     id: '5',
     name: 'Kris',
     image: 'assets/amk4.jpg',
