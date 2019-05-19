@@ -23,17 +23,17 @@ class User {
 List<User> userMocks = [
   User(
     id: '1',
-    name: 'Paul',
+    name: 'Konstantin',
     image: 'assets/profile.jpeg',
-    address: 'Sinini St',
-    city: 'Harare',
-    country: 'Zimbabwe',
+    address: 'Stahnsdorfer Str.',
+    city: 'Potsdam',
+    country: 'Germany',
     supportedProjects: projectMocks
   ),
   User(
     id: '2',
-    name: 'Pascal',
-    image: 'assets/amk1.jpg',
+    name: 'Simon',
+    image: 'assets/profile.jpeg',
     supportedProjects: projectMocks
   ),
   User(

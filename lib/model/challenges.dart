@@ -18,6 +18,7 @@ class Challenge {
   final List<String> tags;
   final User contestant;
   List<Supporter> supporters;
+  String proof;
   final int fundingGoal;
   double get raisedAmount {
     if (supporters.isEmpty) {
@@ -42,45 +43,46 @@ class Challenge {
     this.description,
     this.createdAt,
     this.finishedAt,
+    this.proof,
   });
 }
 
 List<Challenge> challengeMocks = [
   Challenge(
     id: '123',
-    title: 'JUMP INTO GRIEBNITZSEE',
+    title: 'I will wash my neighbor\'s car',
     distance: 'Nearby',
-    description: 'this is awesome',
-    fundingGoal: 100,
+    description: 'My neighbor uses his car every day and it is very dirty. It needs to be washed. The problem is, he does not have time to do this, because he must take care about his three children and has no time to do the washing.',
+    fundingGoal: 10,
     supporters: [
-      Supporter(userMocks[1], 18),
+      Supporter(userMocks[4], 4),
       Supporter(userMocks[2], 1),
     ],
-    contestant: userMocks[0],
-    tags: ['funny', 'sport', 'crazy']
+    contestant: userMocks[3],
+    tags: ['society']
   ),
   Challenge(
     id: '124',
-    title: 'I WILL EAT 1KG OF MEAT',
-    distance: '5km from you',
-    description: 'this is REALLY A GREAT MEAL',
+    title: 'I will eat 2 kg of celery',
+    distance: '3 km from you',
+    description: 'Why not? ;)',
     fundingGoal: 20,
     supporters: [
-      Supporter(userMocks[4], 3),
+      Supporter(userMocks[0], 5),
     ],
     contestant: userMocks[1],
-    tags: ['food']
+    tags: ['food', 'funny', 'crazy']
   ),
   Challenge(
     id: '126',
     title: 'I will clean the sidewalk',
     distance: 'Nearby',
-    description: 'this is awesome',
-    fundingGoal: 10,
-    contestant: userMocks[2],
+    description: 'Because it is DIRTY',
+    fundingGoal: 5,
+    contestant: userMocks[0],
     supporters: [
       Supporter(userMocks[1], 2),
-      Supporter(userMocks[0], 1),
+      Supporter(userMocks[2], 1),
     ],
     tags: ['society', 'voluntary']
   ),
