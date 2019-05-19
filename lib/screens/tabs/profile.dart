@@ -47,6 +47,16 @@ class ProfileState extends State<Profile> {
                   },
                 ),
               ),
+              Container(
+                height: 50.0,
+                width: 1000.0,
+                color: Colors.white70,
+                margin: EdgeInsets.only(top: 230.0),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 230.0, left: 18),
+                child: Text(model.currentUser.name, style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff3f6184), fontSize: 40))
+              ),
             ],
           ),
           SizedBox(height: 10),
@@ -54,6 +64,17 @@ class ProfileState extends State<Profile> {
             leading: Icon(Icons.attach_money),
             title: Text('\$12'),
             subtitle: Text('Balance'),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.location_on),
+            title: Text(
+              '${model.currentUser.country}, ${model.currentUser.city}',
+            ),
+            subtitle: Text(model.currentUser.address),
+            onTap: () {
+              openMap(model.currentUser.address, model.currentUser.city, model.currentUser.country);
+            },
           ),
           Divider(),
           ListTile(
