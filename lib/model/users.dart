@@ -24,7 +24,7 @@ List<User> userMocks = [
   User(
       id: '1',
       name: 'Konstantin',
-      image: 'assets/kjdprofile.jpeg',
+      image: 'assets/kjdprofile.jpg',
       address: 'Stahnsdorfer Str.',
       city: 'Potsdam',
       country: 'Germany',
