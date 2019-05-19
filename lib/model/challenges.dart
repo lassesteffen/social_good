@@ -122,7 +122,7 @@ List<Challenge> challengeMocks = [
       tags: ['food', 'funny', 'crazy']),
   Challenge(
       id: '123',
-      title: 'I will present the best App ever in front of a huge crowd',
+      title: 'Overcome my fear of presentations',
       distance: 'Nearby',
       description:
           'We want to motivate people to do charitable work and make them recognize how gratifiying it can be to help people!!!!',
