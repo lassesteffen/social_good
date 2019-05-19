@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'dart:io';
 
 import 'package:social_good/mainModel.dart' show AppModel;
 import 'package:social_good/model/challenges.dart' show Challenge, Supporter;
@@ -8,6 +9,7 @@ import 'package:social_good/widgets/challenge_summary.dart'
     show ChallengeSummary;
 import 'package:social_good/ui/common/separator.dart';
 import 'package:social_good/ui/text_style.dart';
+import 'package:image_picker/image_picker.dart';
 
 class DetailPage extends StatefulWidget {
   final Challenge challenge;
@@ -32,9 +34,11 @@ class DetailPageState extends State<DetailPage> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.share),
-              onPressed: () {},
+              onPressed: () {
+                _showShareDialog(context);
+              },
             ),
-            ],
+          ],
         ),
         body: Container(
           constraints: BoxConstraints.expand(),
@@ -55,7 +59,77 @@ class DetailPageState extends State<DetailPage> {
   }
 
   void _showCompleteDialog(BuildContext context) {
-    return null;
+    Navigator.push(
+      context,
+      MaterialPageRoute<Null>(
+        builder: (BuildContext context) {
+          return CompleteDialog(
+            challenge: challenge,
+          );
+        },
+        fullscreenDialog: true,
+      ),
+    );
+  }
+
+  void _showShareDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+                'Choose a Platform to share ${challenge.contestant.name}\'s challenge'),
+            content: Container(
+              child: Row(
+                children: <Widget>[
+                  Container(
+                      width: 50.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: new DecorationImage(
+                              fit: BoxFit.fill,
+                              image:
+                                  new AssetImage("assets/shareLogos/fb.png")))),
+                  Spacer(),
+                  Container(
+                      width: 50.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: new DecorationImage(
+                              fit: BoxFit.fill,
+                              image: new AssetImage(
+                                  "assets/shareLogos/insta.png")))),
+                  Spacer(),
+                  Container(
+                      width: 50.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: new DecorationImage(
+                              fit: BoxFit.fill,
+                              image: new AssetImage(
+                                  "assets/shareLogos/twitter.png")))),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              FlatButton(
+                child: Text('Share'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
   }
 
   void _showAlertDialog(BuildContext context) {
@@ -80,7 +154,7 @@ class DetailPageState extends State<DetailPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Support ${challenge.contestant.name}s challenge'),
+            title: Text('Support ${challenge.contestant.name}\'s challenge'),
             content: Column(
               children: <Widget>[
                 Text('1. Select a project to which you want to donate.'),
@@ -89,11 +163,12 @@ class DetailPageState extends State<DetailPage> {
                   padding: EdgeInsets.only(top: 10),
                 ),
                 Text(
-                    '2. Select the amount to support ${challenge.contestant.name}s challenge with.'),
+                    '2. Select the amount to support ${challenge.contestant.name}\'s challenge with.'),
                 TextField(
                   keyboardType: TextInputType.number,
                   controller: _amountController,
-                  decoration: InputDecoration(hintText: 'Amount in USD'),
+                  decoration: InputDecoration(
+                      hintText: 'Amount in USD', prefixText: '\$'),
                 ),
               ],
             ),
@@ -160,11 +235,8 @@ class DetailPageState extends State<DetailPage> {
 
   Container _getBackground() {
     return Container(
-      child: Image.asset(
-        challenge.contestant.image,
-        fit: BoxFit.cover,
-        height: 300.0,
-      ),
+      color: Theme.of(context).accentColor,
+      height: 300.0,
       constraints: BoxConstraints.expand(height: 295.0),
     );
   }
@@ -174,17 +246,32 @@ class DetailPageState extends State<DetailPage> {
       margin: EdgeInsets.only(top: 190.0),
       height: 110.0,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: <Color>[
-            Colors.white,
-            Theme.of(context).accentColor,
-          ],
-          stops: [0.0, 0.9],
-          begin: const FractionalOffset(0.0, 0.0),
-          end: const FractionalOffset(0.0, 1.0),
-        ),
+        color: Theme.of(context).accentColor,
       ),
     );
+  }
+
+  List<Widget> _getProofSection() {
+    if (challenge.finishedAt == null) {
+      return [
+        Text(
+          'After I am done you will see my proof here!',
+          style: Style.commonTextStyle,
+        ),
+      ];
+    }
+    return [
+      Text(
+        'A big thanks to all my supporters!',
+        style: Style.commonTextStyle,
+      ),
+      Padding(
+        padding: EdgeInsets.only(top: 10),
+        child: Image.asset(
+          challenge.proof,
+        ),
+      ),
+    ];
   }
 
   Container _getContent() {
@@ -212,11 +299,161 @@ class DetailPageState extends State<DetailPage> {
                   challenge.description,
                   style: Style.commonTextStyle,
                 ),
+                Padding(
+                  padding: EdgeInsets.only(top: 15),
+                ),
+                Text(
+                  'Proof',
+                  style: Style.headerTextStyle,
+                ),
+                Separator(),
+                ..._getProofSection()
               ],
             ),
           ),
         ],
       ),
     );
+  }
+}
+
+class CompleteDialog extends StatefulWidget {
+  final Challenge challenge;
+  CompleteDialog({Key key, this.challenge}) : super(key: key);
+
+  CompleteDialogState createState() => CompleteDialogState(challenge);
+}
+
+class CompleteDialogState extends State<CompleteDialog> {
+  final Challenge challenge;
+  File cameraFile;
+
+  CompleteDialogState(this.challenge);
+
+  Widget build(BuildContext context) {
+    {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Complete your Challenge'),
+        ),
+        body: ListView(
+          children: [
+            Container(
+              padding: EdgeInsets.all(10),
+              child: ScopedModelDescendant<AppModel>(
+                builder: (context, child, appModel) {
+                  return Column(
+                    children: <Widget>[
+                      Text(
+                        'Title',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '${challenge.title}',
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                      ),
+                      Text(
+                        'Description',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '${challenge.description}',
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                      ),
+                      Text(
+                        'Awesome ${challenge.contestant.name}! Good job for finishing the Challenge. To make your supporters laugh upload of picture of yourself while doing the challenge!',
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                      ),
+                      _imageButton(context),
+                      cameraFile != null
+                          ? RaisedButton(
+                              child: Text('Complete now!'),
+                              color: Theme.of(context).primaryColor,
+                              textColor: Colors.white,
+                              onPressed: () {
+                                appModel.finishChallenge(
+                                    challenge.id, cameraFile.path);
+                                Navigator.of(context).pop();
+                              },
+                            )
+                          : Padding(
+                              padding: EdgeInsets.only(top: 0),
+                            ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  Widget _imageButton(BuildContext context) {
+    if (cameraFile == null) {
+      return RaisedButton(
+        child: Text('Add image'),
+        color: Theme.of(context).primaryColor,
+        textColor: Colors.white,
+        onPressed: () => _showImageAddSheet(),
+      );
+    }
+    return Image.asset(
+      cameraFile.path,
+    );
+  }
+
+  void _addPictureCamera() async {
+    cameraFile = await ImagePicker.pickImage(
+      source: ImageSource.camera,
+    );
+    setState(() {});
+  }
+
+  void _addPictureGallery() async {
+    cameraFile = await ImagePicker.pickImage(
+      source: ImageSource.gallery,
+    );
+    setState(() {});
+  }
+
+  Widget _showImageAddSheet() {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return Container(
+            child: new Wrap(
+              children: <Widget>[
+                new ListTile(
+                    leading: Icon(Icons.camera_alt),
+                    title: new Text('Kamera'),
+                    onTap: () => _addPictureCamera()),
+                new ListTile(
+                  leading: Icon(Icons.photo_library),
+                  title: new Text('Gallery'),
+                  onTap: () => _addPictureGallery(),
+                ),
+                new ListTile(
+                  leading: Icon(Icons.close),
+                  title: new Text('Abbrechen'),
+                  onTap: () => Navigator.pop(context),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
