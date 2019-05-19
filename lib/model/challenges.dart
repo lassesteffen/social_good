@@ -80,7 +80,7 @@ List<Challenge> challengeMocks = [
   Challenge(
       id: '101',
       title: 'I will spray an unused building',
-      distance: 'Potsdam, 5 km from you',
+      distance: 'Berlin, 20 km from you',
       description:
           'I’m interested in graffiti and in my neighborhood is a big grey and unused building. To make it more colorful, I want to improve my skills and spray a graffiti on the wall.',
       fundingGoal: 25,
