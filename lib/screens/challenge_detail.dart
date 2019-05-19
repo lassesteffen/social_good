@@ -440,11 +440,17 @@ class CompleteDialogState extends State<CompleteDialog> {
                 new ListTile(
                     leading: Icon(Icons.camera_alt),
                     title: new Text('Kamera'),
-                    onTap: () => _addPictureCamera()),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      return _addPictureCamera();
+                    }),
                 new ListTile(
                   leading: Icon(Icons.photo_library),
                   title: new Text('Gallery'),
-                  onTap: () => _addPictureGallery(),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    return _addPictureGallery();
+                  },
                 ),
                 new ListTile(
                   leading: Icon(Icons.close),

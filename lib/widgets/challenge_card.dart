@@ -44,8 +44,8 @@ class ChallengeCard extends StatelessWidget {
 
     Color getColor() {
       return challenge.finishedAt == null
-                ? Theme.of(context).primaryColor
-                : Colors.teal;
+          ? Theme.of(context).primaryColor
+          : Colors.teal;
     }
 
     final planetCardContent = new Container(
@@ -56,28 +56,31 @@ class ChallengeCard extends StatelessWidget {
         crossAxisAlignment:
             horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: <Widget>[
-          new Text('\$${challenge.raisedAmount.toInt()}/\$${challenge.fundingGoal}',
+          new Text(
+              '\$${challenge.raisedAmount.toInt()}/\$${challenge.fundingGoal}',
               style: Style.commonTextStyle),
           new Container(height: 4.0),
           new Text(challenge.title, style: Style.titleTextStyle),
           new Container(height: 10.0),
           new Text(challenge.distance, style: Style.commonTextStyle),
           new SelectableTags(
-              backgroundContainer: getColor(),
-              tags: challenge.tags.map((String tag) {return Tag(title: tag, active: false);}).toList(),
-              columns: challenge.tags.length,
-              symmetry: false,
-              onPressed: (tag){
-                tag.active = false;
-              },
-            ),
+            backgroundContainer: getColor(),
+            tags: challenge.tags.map((String tag) {
+              return Tag(title: tag, active: false);
+            }).toList(),
+            columns: challenge.tags.length,
+            symmetry: false,
+            onPressed: (tag) {
+              tag.active = false;
+            },
+          ),
         ],
       ),
     );
 
     final planetCard = new Container(
       child: planetCardContent,
-      height: horizontal ? 152.0 : 191.0,
+      height: horizontal ? 170.0 : 210.0,
       margin: horizontal
           ? new EdgeInsets.only(left: 25.0)
           : new EdgeInsets.only(top: 72.0),
