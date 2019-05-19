@@ -121,7 +121,7 @@ List<Challenge> challengeMocks = [
       proof: 'assets/proof-celery.jpg',
       tags: ['food', 'funny', 'crazy']),
   Challenge(
-      id: '123',
+      id: '123askdfph',
       title: 'Overcome my fear of presentations',
       distance: 'Nearby',
       description:
@@ -131,7 +131,7 @@ List<Challenge> challengeMocks = [
         Supporter(userMocks[1], 1),
       ],
       contestant: userMocks[0],
-      tags: ['society']),
+      tags: ['personal goals']),
   Challenge(
       id: '126',
       title: 'I will clean the sidewalk',
