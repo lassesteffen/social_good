@@ -32,7 +32,9 @@ class DetailPageState extends State<DetailPage> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.share),
-              onPressed: () {},
+              onPressed: () {
+                _showShareDialog(context);
+              },
             ),
             ],
         ),
@@ -52,6 +54,68 @@ class DetailPageState extends State<DetailPage> {
         ],
       );
     });
+  }
+
+  void _showShareDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Choose a Platform to share ${challenge.contestant.name}\'s challenge'),
+            content: Container(
+              child: Row(
+                children: <Widget>[
+                  Container(
+                      width: 50.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: new DecorationImage(
+                          fit: BoxFit.fill,
+                          image: new AssetImage("assets/shareLogos/fb.png")
+                      )
+                )),
+                Spacer(),
+                Container(
+                      width: 50.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: new DecorationImage(
+                          fit: BoxFit.fill,
+                          image: new AssetImage("assets/shareLogos/insta.jpeg")
+                      )
+                )),
+                Spacer(),
+                Container(
+                      width: 50.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: new DecorationImage(
+                          fit: BoxFit.fill,
+                          image: new AssetImage("assets/shareLogos/twitter.png")
+                      )
+                )),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              FlatButton(
+                child: Text('Share'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
   }
 
   void _showCompleteDialog(BuildContext context) {
@@ -80,7 +144,7 @@ class DetailPageState extends State<DetailPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Support ${challenge.contestant.name}s challenge'),
+            title: Text('Support ${challenge.contestant.name}\'s challenge'),
             content: Column(
               children: <Widget>[
                 Text('1. Select a project to which you want to donate.'),
@@ -89,11 +153,11 @@ class DetailPageState extends State<DetailPage> {
                   padding: EdgeInsets.only(top: 10),
                 ),
                 Text(
-                    '2. Select the amount to support ${challenge.contestant.name}s challenge with.'),
+                    '2. Select the amount to support ${challenge.contestant.name}\'s challenge with.'),
                 TextField(
                   keyboardType: TextInputType.number,
                   controller: _amountController,
-                  decoration: InputDecoration(hintText: 'Amount in USD'),
+                  decoration: InputDecoration(hintText: 'Amount in USD', prefixText: '\$'),
                 ),
               ],
             ),
