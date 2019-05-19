@@ -22,7 +22,7 @@ class MySupportedChallenges extends StatelessWidget {
           children: <Widget>[
             Container(
               padding: EdgeInsets.all(5.0),
-              child: ListView(
+              child: Column(
                 children: [
                   ...myOpenChallengeWidgets,
                   Container(
