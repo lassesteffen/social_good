@@ -28,7 +28,7 @@ class MySupportedChallenges extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10.0),
                     child: Text(
-                      'Completed Challenges',
+                      'Completed',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,

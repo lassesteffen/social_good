@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 
 import 'package:social_good/mainModel.dart' show AppModel;
 import 'package:social_good/model/challenges.dart';
+import 'package:social_good/model/projects.dart';
 import 'package:social_good/widgets/challenge_summary.dart'
     show ChallengeSummary;
 import 'package:social_good/ui/common/separator.dart';

@@ -34,20 +34,24 @@ List<User> userMocks = [
     id: '2',
     name: 'Pascal',
     image: 'assets/amk1.jpg',
+    supportedProjects: projectMocks
   ),
   User(
     id: '3',
     name: 'Lasse',
     image: 'assets/amk2.jpg',
+    supportedProjects: projectMocks
   ),
   User(
     id: '4',
     name: 'Jan',
     image: 'assets/amk3.jpg',
+    supportedProjects: projectMocks
   ),
   User(
     id: '5',
     name: 'Kris',
     image: 'assets/amk4.jpg',
+    supportedProjects: projectMocks
   ),
 ];

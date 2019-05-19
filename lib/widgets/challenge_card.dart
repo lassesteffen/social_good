@@ -42,9 +42,10 @@ class ChallengeCard extends StatelessWidget {
       );
     }
 
-    List<Tag> getTags() {
-      if(challenge.tags.length == 0) return [].toList();
-      else return challenge.tags.map((String tag) {return Tag(title: tag, active: false);}).toList();
+    Color getColor() {
+      return challenge.finishedAt == null
+                ? Theme.of(context).primaryColor
+                : Colors.teal;
     }
 
     final planetCardContent = new Container(
@@ -62,8 +63,8 @@ class ChallengeCard extends StatelessWidget {
           new Container(height: 10.0),
           new Text(challenge.distance, style: Style.commonTextStyle),
           new SelectableTags(
-              backgroundContainer: Theme.of(context).primaryColor,
-              tags: getTags(),
+              backgroundContainer: getColor(),
+              tags: challenge.tags.map((String tag) {return Tag(title: tag, active: false);}).toList(),
               columns: challenge.tags.length,
               symmetry: false,
               onPressed: (tag){
@@ -81,9 +82,7 @@ class ChallengeCard extends StatelessWidget {
           ? new EdgeInsets.only(left: 25.0)
           : new EdgeInsets.only(top: 72.0),
       decoration: new BoxDecoration(
-        color: challenge.finishedAt == null
-            ? Theme.of(context).primaryColor
-            : Colors.teal,
+        color: getColor(),
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
         boxShadow: <BoxShadow>[
