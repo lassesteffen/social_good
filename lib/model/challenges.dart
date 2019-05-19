@@ -62,59 +62,53 @@ List<Challenge> challengeMocks = [
       contestant: userMocks[3],
       tags: ['society']),
   Challenge(
-    id: '100',
-    title: 'I will plant three new trees',
-    distance: 'Potsdam, 10km from you ',
-    description: 'I work for a tree nursery and there are some trees left. If you support my challenge, I will do something for the society and plant some trees in the local park.',
-    fundingGoal: 60,
-    contestant: userMocks[3],
-    supporters: [
-      Supporter(userMocks[4], 2),
-      Supporter(userMocks[0], 3),
-      Supporter(userMocks[0], 15),
-    ],
-    tags: ['society']
-  ),
+      id: '100',
+      title: 'I will plant three new trees',
+      distance: 'Potsdam, 10km from you ',
+      description:
+          'I work for a tree nursery and there are some trees left. If you support my challenge, I will do something for the society and plant some trees in the local park.',
+      fundingGoal: 60,
+      contestant: userMocks[3],
+      supporters: [
+        Supporter(userMocks[4], 2),
+        Supporter(userMocks[0], 3),
+        Supporter(userMocks[0], 15),
+      ],
+      tags: [
+        'society'
+      ]),
   Challenge(
-    id: '101',
-    title: 'I will spray an unused building',
-    distance: 'Potsdam, 5 km from you',
-    description: 'I’m interested in graffiti and in my neighborhood is a big grey and unused building. To make it more colorful, I want to improve my skills and spray a graffiti on the wall.',
-    fundingGoal: 25,
-    contestant: userMocks[3],
-    supporters: [
-      Supporter(userMocks[4], 2),
-      Supporter(userMocks[0], 3),
-      Supporter(userMocks[0], 15),
-    ],
-    tags: ['styling']
-  ),
+      id: '101',
+      title: 'I will spray an unused building',
+      distance: 'Potsdam, 5 km from you',
+      description:
+          'I’m interested in graffiti and in my neighborhood is a big grey and unused building. To make it more colorful, I want to improve my skills and spray a graffiti on the wall.',
+      fundingGoal: 25,
+      contestant: userMocks[3],
+      supporters: [
+        Supporter(userMocks[4], 2),
+        Supporter(userMocks[0], 3),
+        Supporter(userMocks[0], 15),
+      ],
+      tags: [
+        'styling'
+      ]),
   Challenge(
-    id: '102',
-    title: 'I will run a marathon',
-    distance: 'Berlin, 12 km from you ',
-    description: 'I want to run a famous marathon, but I can’t motivate myself to train. If I would do something for social good, it would be an extra motivation for me.',
-    fundingGoal: 8,
-    contestant: userMocks[3],
-    supporters: [
-      Supporter(userMocks[4], 2),
-      Supporter(userMocks[0], 3),
-      Supporter(userMocks[0], 15),
-    ],
-    tags: ['personal goals']
-  ),
-  Challenge(
-    id: '124',
-    title: 'I will eat 2 kg of celery',
-    distance: '3 km from you',
-    description: 'Why not? ;)',
-    fundingGoal: 20,
-    supporters: [
-      Supporter(userMocks[0], 5),
-    ],
-    contestant: userMocks[1],
-    tags: ['food', 'funny', 'crazy']
-  ),
+      id: '102',
+      title: 'I will run a marathon',
+      distance: 'Berlin, 12 km from you ',
+      description:
+          'I want to run a famous marathon, but I can’t motivate myself to train. If I would do something for social good, it would be an extra motivation for me.',
+      fundingGoal: 8,
+      contestant: userMocks[3],
+      supporters: [
+        Supporter(userMocks[4], 2),
+        Supporter(userMocks[0], 3),
+        Supporter(userMocks[0], 15),
+      ],
+      tags: [
+        'personal goals'
+      ]),
   Challenge(
       id: '124',
       title: 'I will eat 2 kg of celery',
@@ -126,6 +120,7 @@ List<Challenge> challengeMocks = [
       ],
       contestant: userMocks[0],
       finishedAt: DateTime.now(),
+      proof: 'assets/proof-celery.jpg',
       tags: ['food', 'funny', 'crazy']),
   Challenge(
       id: '126',
@@ -169,6 +164,7 @@ List<Challenge> challengeMocks = [
       contestant: userMocks[3],
       supporters: [Supporter(userMocks[0], 10)],
       finishedAt: DateTime.now(),
+      proof: 'assets/proof-soup.jpg',
       tags: ['voluntary', 'food', 'helping']),
   Challenge(
       id: 'aaaa',
@@ -211,6 +207,8 @@ List<Challenge> challengeMocks = [
         Supporter(userMocks[0], 9),
         Supporter(userMocks[2], 1),
       ],
+      finishedAt: DateTime.now(),
+      proof: 'assets/proof-griebnitz.jpg',
       contestant: userMocks[3],
       tags: ['society']),
 ];
