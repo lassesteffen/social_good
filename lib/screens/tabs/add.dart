@@ -21,18 +21,18 @@ class AddState extends State<Add> {
   FocusNode _untilFocusNode = FocusNode();
 
   List<Tag> _tags=[
-    Tag(id: 0, title: 'funny', active: false),
-    Tag(id: 0, title: 'voluntary', active: false),
-    Tag(id: 0, title: 'water', active: false),
-    Tag(id: 0, title: 'food', active: false),
-    Tag(id: 0, title: 'kids', active: false),
-    Tag(id: 0, title: 'sport', active: false),
-    Tag(id: 0, title: 'styling', active: false),
-    Tag(id: 0, title: 'personal goals', active: false),
-    Tag(id: 0, title: 'society', active: false),
-    Tag(id: 0, title: 'family', active: false),
-    Tag(id: 0, title: 'friends', active: false),
-    Tag(id: 0, title: 'activity', active: false),
+    Tag(title: 'funny', active: false),
+    Tag(title: 'voluntary', active: false),
+    Tag(title: 'water', active: false),
+    Tag(title: 'food', active: false),
+    Tag(title: 'kids', active: false),
+    Tag(title: 'sport', active: false),
+    Tag(title: 'styling', active: false),
+    Tag(title: 'personal goals', active: false),
+    Tag(title: 'society', active: false),
+    Tag(title: 'family', active: false),
+    Tag(title: 'friends', active: false),
+    Tag(title: 'activity', active: false),
   ];
 
   double _marginBetweenWidgets = 12;
@@ -87,6 +87,7 @@ class AddState extends State<Add> {
             SizedBox(height: _marginBetweenWidgets),
             SelectableTags(
               tags: _tags,
+              backgroundContainer: Color(0xfffafafa),
               columns: 5, // default 4
               symmetry: false, // default false
             ),

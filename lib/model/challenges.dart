@@ -48,8 +48,8 @@ class Challenge {
 List<Challenge> challengeMocks = [
   Challenge(
     id: '123',
-    title: 'I WILL JUMP INTO LAKE GRIEBNITZSEE',
-    distance: '1km from you',
+    title: 'JUMP INTO GRIEBNITZSEE',
+    distance: 'Nearby',
     description: 'this is awesome',
     fundingGoal: 100,
     supporters: [
@@ -57,6 +57,7 @@ List<Challenge> challengeMocks = [
       Supporter(userMocks[2], 1),
     ],
     contestant: userMocks[0],
+    tags: ['funny', 'sport', 'crazy']
   ),
   Challenge(
     id: '124',
@@ -68,6 +69,7 @@ List<Challenge> challengeMocks = [
       Supporter(userMocks[4], 3),
     ],
     contestant: userMocks[1],
+    tags: ['food']
   ),
   Challenge(
     id: '126',
@@ -80,6 +82,7 @@ List<Challenge> challengeMocks = [
       Supporter(userMocks[1], 2),
       Supporter(userMocks[0], 1),
     ],
+    tags: ['society', 'voluntary']
   ),
   Challenge(
     id: '1211',
@@ -92,15 +95,17 @@ List<Challenge> challengeMocks = [
       Supporter(userMocks[1], 1),
       Supporter(userMocks[3], 1),
     ],
+    tags: ['unnecessary', 'weird']
   ),
   Challenge(
     id: 'amkaud',
     title: 'I will help out at the soup kitchen',
-    distance: '5km from you',
+    distance: 'Nearby',
     description: 'this is awesome',
     fundingGoal: 10,
     contestant: userMocks[0],
     supporters: [],
+    tags: ['voluntary', 'food', 'helping']
   ),
   Challenge(
     id: 'aaaa',
@@ -112,8 +117,10 @@ List<Challenge> challengeMocks = [
     supporters: [
       Supporter(userMocks[2], 1),
       Supporter(userMocks[0], 3),
+      Supporter(userMocks[0], 11),
     ],
     finishedAt: DateTime.now(),
+    tags: ['friendship']
   ),
   Challenge(
     id: '12bbbb4',
@@ -125,7 +132,9 @@ List<Challenge> challengeMocks = [
     supporters: [
       Supporter(userMocks[4], 2),
       Supporter(userMocks[0], 3),
+      Supporter(userMocks[0], 15),
     ],
     finishedAt: DateTime.now(),
+    tags: ['funny', 'crazy']
   ),
 ];

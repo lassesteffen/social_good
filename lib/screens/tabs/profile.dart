@@ -1,12 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:social_good/mainModel.dart'
   show AppModel;
 import 'package:social_good/model/projects.dart' show projectMocks, Project;
-
 import 'package:social_good/utils/url.dart' show openMap;
 
 class Profile extends StatefulWidget {
@@ -28,6 +26,7 @@ class ProfileState extends State<Profile> {
                         )
                     )),);
     }).toList();
+    
 
     return Container(
       child: ListView(
@@ -50,19 +49,26 @@ class ProfileState extends State<Profile> {
               ),
             ],
           ),
+          SizedBox(height: 10),
           ListTile(
-            leading: Icon(Icons.location_on),
-            title: Text(
-              '${model.currentUser.country}, ${model.currentUser.city}',
-            ),
-            subtitle: Text(model.currentUser.address),
-            onTap: () {
-              openMap(model.currentUser.address, model.currentUser.city, model.currentUser.country);
-            },
+            leading: Icon(Icons.attach_money),
+            title: Text('\$12'),
+            subtitle: Text('Balance'),
           ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.message),
+            leading: Icon(Icons.format_list_numbered),
+            title: Text('14 (3 Supports, \$18)'),
+            subtitle: Text('Supporter Rank'),
+          ),
+          ListTile(
+            leading: Icon(Icons.format_list_numbered),
+            title: Text('2 (7 Challenges, \$73)'),
+            subtitle: Text('Challenger Rank'),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.store),
             title: Text(
               'Supported Projects',
               style: Theme.of(context).textTheme.headline,
