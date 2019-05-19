@@ -100,8 +100,8 @@ class ChallengeCard extends StatelessWidget {
             ? () => Navigator.of(context).push(
                   new PageRouteBuilder(
                     pageBuilder: (_, __, ___) => new DetailPage(
-                          challenge,
-                          pageId,
+                          challenge: challenge,
+                          pageId: pageId,
                         ),
                     transitionsBuilder:
                         (context, animation, secondaryAnimation, child) =>
