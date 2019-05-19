@@ -30,13 +30,21 @@ List<User> userMocks = [
       country: 'Germany',
       supportedProjects: projectMocks),
   User(
+      id: '1',
+      name: 'Lasse',
+      image: 'assets/lasseprofile.jpg',
+      address: 'Charlottenweg',
+      city: 'Berlin',
+      country: 'Germany',
+      supportedProjects: projectMocks),
+  User(
       id: '2',
       name: 'Simon',
       image: 'assets/profile.jpeg',
       supportedProjects: projectMocks),
   User(
       id: '3',
-      name: 'Lasse',
+      name: 'Jack',
       image: 'assets/amk2.jpg',
       supportedProjects: projectMocks),
   User(
@@ -50,8 +58,8 @@ List<User> userMocks = [
       image: 'assets/amk4.jpg',
       supportedProjects: projectMocks),
   User(
-      id: '5',
-      name: 'Kris',
+      id: '6',
+      name: 'Tom',
       image: 'assets/amk1.jpg',
       supportedProjects: projectMocks),
 ];

@@ -57,9 +57,9 @@ List<Challenge> challengeMocks = [
       fundingGoal: 10,
       supporters: [
         Supporter(userMocks[4], 4),
-        Supporter(userMocks[2], 1),
+        Supporter(userMocks[3], 1),
       ],
-      contestant: userMocks[3],
+      contestant: userMocks[2],
       tags: ['society']),
   Challenge(
       id: '100',
@@ -84,7 +84,7 @@ List<Challenge> challengeMocks = [
       description:
           'I’m interested in graffiti and in my neighborhood is a big grey and unused building. To make it more colorful, I want to improve my skills and spray a graffiti on the wall.',
       fundingGoal: 25,
-      contestant: userMocks[3],
+      contestant: userMocks[1],
       supporters: [
         Supporter(userMocks[4], 2),
         Supporter(userMocks[2], 3),
@@ -99,9 +99,9 @@ List<Challenge> challengeMocks = [
       description:
           'I want to run a famous marathon, but I can’t motivate myself to train. If I would do something for social good, it would be an extra motivation for me.',
       fundingGoal: 8,
-      contestant: userMocks[3],
+      contestant: userMocks[4],
       supporters: [
-        Supporter(userMocks[4], 2),
+        Supporter(userMocks[1], 2),
         Supporter(userMocks[2], 3),
       ],
       tags: [
@@ -203,10 +203,10 @@ List<Challenge> challengeMocks = [
       fundingGoal: 10,
       supporters: [
         Supporter(userMocks[0], 9),
-        Supporter(userMocks[2], 1),
+        Supporter(userMocks[4], 1),
       ],
       finishedAt: DateTime.now(),
       proof: 'assets/proof-griebnitz.jpg',
-      contestant: userMocks[3],
+      contestant: userMocks[2],
       tags: ['society']),
 ];
