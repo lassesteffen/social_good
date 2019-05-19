@@ -71,8 +71,8 @@ List<Challenge> challengeMocks = [
       contestant: userMocks[3],
       supporters: [
         Supporter(userMocks[4], 2),
-        Supporter(userMocks[0], 3),
-        Supporter(userMocks[0], 15),
+        Supporter(userMocks[1], 3),
+        Supporter(userMocks[2], 15),
       ],
       tags: [
         'society'
@@ -87,8 +87,7 @@ List<Challenge> challengeMocks = [
       contestant: userMocks[3],
       supporters: [
         Supporter(userMocks[4], 2),
-        Supporter(userMocks[0], 3),
-        Supporter(userMocks[0], 15),
+        Supporter(userMocks[2], 3),
       ],
       tags: [
         'styling'
@@ -103,8 +102,7 @@ List<Challenge> challengeMocks = [
       contestant: userMocks[3],
       supporters: [
         Supporter(userMocks[4], 2),
-        Supporter(userMocks[0], 3),
-        Supporter(userMocks[0], 15),
+        Supporter(userMocks[2], 3),
       ],
       tags: [
         'personal goals'
@@ -175,7 +173,7 @@ List<Challenge> challengeMocks = [
       contestant: userMocks[4],
       supporters: [
         Supporter(userMocks[2], 1),
-        Supporter(userMocks[0], 3),
+        Supporter(userMocks[1], 3),
         Supporter(userMocks[3], 11)
       ],
       finishedAt: DateTime.now(),
