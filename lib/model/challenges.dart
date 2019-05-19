@@ -207,6 +207,6 @@ List<Challenge> challengeMocks = [
       ],
       finishedAt: DateTime.now(),
       proof: 'assets/proof-griebnitz.jpg',
-      contestant: userMocks[2],
+      contestant: userMocks[1],
       tags: ['society']),
 ];
