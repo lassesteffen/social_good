@@ -1,6 +1,6 @@
 # social_good
 
-Project for the hackathon amk
+Project for the HPI hackathon
 
 ## Getting Started
 
